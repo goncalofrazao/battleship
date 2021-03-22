@@ -272,7 +272,7 @@ void positioning_pieces(int x, int y, int global_id, int board[15][24])
         board[x + 1][y] = 6;
     break;
 
-     case 40:
+    case 40:
         board[x][y] = 7;
         board[x][y + 1] = 7;
         board[x][y + 2] = 7;
@@ -306,5 +306,4 @@ void positioning_pieces(int x, int y, int global_id, int board[15][24])
     default:
         break;
     }
-
 }
