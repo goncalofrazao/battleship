@@ -1,7 +1,7 @@
 PROJECT_NAME = wargame #target file name
 
 CC = gcc #compiler
-CFLAGS = -Wall -std=c11 -O3
+CFLAGS = -Wall -std=c11 -g  #-O3
 
 
 OBJECTS = main.o restricoes.o pieces.o #objects
@@ -11,11 +11,11 @@ all: $(PROJECT_NAME)
 $(PROJECT_NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $(PROJECT_NAME)
 
-main.o: main.c
+main.o: main.c headers.h
 
-restricoes.o: restricoes.c restricoes.h
+restricoes.o: restricoes.c restricoes.h headers.h
 
-pieces.o: pieces.c pieces.h
+pieces.o: pieces.c pieces.h headers.h
 
 
 clean:

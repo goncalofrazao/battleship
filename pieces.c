@@ -32,7 +32,29 @@ int global_id_returner(int type_id, int instance_id)
         
         case 8:
             global_id = 42;
-
     }
     return global_id;
+}
+
+void positioning_board(int x, int y, int global_id, int board[15][24])
+{
+    switch (global_id)
+    {
+    case 1: 
+            board[x][y] = 1;
+        break;
+    
+    case 2: 
+            board[x + 1][y] = 1;
+        break;
+
+    case 10:
+            board[x][y] = 2;
+            board[x+1][y] = 2;
+        break;
+    
+    default:
+        break;
+    }
+
 }
