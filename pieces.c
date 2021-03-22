@@ -40,7 +40,7 @@ int global_id_returner(int type_id, int instance_id)
 
 
 //esta função identifica a posição das peças no tabuleiro em função com o identificador global
-void positioning_board(int x, int y, int global_id, int board[15][24])
+void positioning_pieces(int x, int y, int global_id, int board[15][24])
 {
     switch (global_id)
     {
@@ -149,7 +149,7 @@ void positioning_board(int x, int y, int global_id, int board[15][24])
     case 23:
         board[x][y + 1] = 3;
         board[x + 1][y + 1] = 3;
-        board[x + 2][y + 2] = 3;
+        board[x + 2][y + 1] = 3;
         break;
 
     case 24:
@@ -279,7 +279,7 @@ void positioning_board(int x, int y, int global_id, int board[15][24])
         board[x + 1][y + 1] = 7;
         board[x + 2][y] = 7;
         board[x + 2][y + 1] = 7;
-        board[x + 2][y + 1] = 7;
+        board[x + 2][y + 2] = 7;
     break;   
 
     case 41:

@@ -28,10 +28,12 @@ int restricao0()
 
 }
 
-int restricao1(int x, int y, int global_id)
+int restricao1(int x, int y, int global_id, int columns, int lines)
 {
+    columns--;
+    lines--;
     int flag_up = 0, flag_left = 0, flag_down = 0, flag_right = 0;
-    if (x + 3 > 8){
+    if (x + 3 > columns){
         flag_right = 1;
     }
     if (x - 1 < 0){
@@ -40,7 +42,7 @@ int restricao1(int x, int y, int global_id)
     if (y - 1 < 0){
         flag_up = 1;
     }
-    if (y + 3 > 8){
+    if (y + 3 > lines){
         flag_down = 1;
     }
 }

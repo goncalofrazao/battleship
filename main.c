@@ -1,6 +1,7 @@
 #include "headers.h"
 #include "restricoes.h"
 #include "pieces.h"
+#include "board.h"
 
 int main(int argc, char **argv)
 {
@@ -8,6 +9,7 @@ int main(int argc, char **argv)
     int lines = 0;
     int global_id = 0;
     int board[15][24] = {0};
+    srand(time(NULL));
     for(int i = 1; i < argc; i ++){
         if (strcmp(argv[i], "-t") == 0){
             if (argv[i + 1][0] != '-'){
@@ -33,6 +35,21 @@ int main(int argc, char **argv)
             }
         }
     }
+    global_id = atoi(argv[argc - 1]);
+    
+    while (global_id < 43){
+        printf("%d\n", global_id);
+        positioning_pieces(0 , 0, global_id, board);
+        //positioning_pieces(6 , 6, 42, board);
 
+        board_printer(board, lines, columns);
+        global_id++;
+        clear_board(board, lines, columns);
+    }
+
+
+
+
+    return 0;
 }
 
