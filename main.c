@@ -6,7 +6,7 @@ int main(int argc, char **argv)
 {
     int columns = 0;
     int lines = 0;
-    int global_id;
+    int global_id = 0;
     int board[15][24] = {0};
     for(int i = 1; i < argc; i ++){
         if (strcmp(argv[i], "-t") == 0){
@@ -19,11 +19,11 @@ int main(int argc, char **argv)
                 //printf("%d\n", columns);
                 //printf("%d\n", lines);
                 if (columns % 3 != 0 || columns < 9 || columns >24){
-                    printf("-1");
+                    printf("-1\n");
                     return -1;
                 }
                 if (lines % 3 != 0 || lines < 9 || lines > 15){
-                    printf("-1");
+                    printf("-1\n");
                     return -1;
                 }
             }
