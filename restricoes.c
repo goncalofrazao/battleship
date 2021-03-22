@@ -37,10 +37,10 @@ int restricao1(int x, int y, int global_id)
     if (x - 1 < 0){
         flag_left = 1;
     }
-    if (y + 1 > 8){
+    if (y - 1 < 0){
         flag_up = 1;
     }
-    if (x - 3 < 0){
+    if (y + 3 > 8){
         flag_down = 1;
     }
 }
