@@ -9,8 +9,9 @@ int main(int argc, char **argv)
     int lines = 0;
     int global_id = 0;
     int board[15][24] = {0};
+    int modo[] = {0, 1, 1};
     srand(time(NULL));
-    for(int i = 1; i < argc; i ++){
+    for(int i = 1; i < argc; i++){
         if (strcmp(argv[i], "-t") == 0){
             if (argv[i + 1][0] != '-'){
                 char* aux = strchr(argv[i+1], 'x');
@@ -36,7 +37,7 @@ int main(int argc, char **argv)
         }
     }
     global_id = atoi(argv[argc - 1]);
-    
+    /*
     while (global_id < 43){
         printf("%d\n", global_id);
         positioning_pieces(0 , 0, global_id, board);
@@ -46,7 +47,7 @@ int main(int argc, char **argv)
         global_id++;
         clear_board(board, lines, columns);
     }
-
+    */
 
 
 
