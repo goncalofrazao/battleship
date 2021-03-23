@@ -14,13 +14,14 @@ int main(int argc, char **argv)
     for(int i = 1; i < argc; i++){
         if (strcmp(argv[i], "-t") == 0){
             if (argv[i + 1][0] != '-'){
-                char* aux = strchr(argv[i+1], 'x');
+                sscanf(argv[i + 1], "%dx%d", &lines, &columns);
+                //char* aux = strchr(argv[i+1], 'x');
                 //printf("%s\n", aux);
-                columns = atoi(aux + 1);
-                (*aux) = '\0';
-                lines = atoi(argv[i+1]);
-                //printf("%d\n", columns);
-                //printf("%d\n", lines);
+                //columns = atoi(aux + 1);
+                //(*aux) = '\0';
+                //lines = atoi(argv[i+1]);
+                printf("%d\n", lines);
+                printf("%d\n", columns);
                 if (columns % 3 != 0 || columns < 9 || columns >24){
                     printf("-1\n");
                     return -1;
