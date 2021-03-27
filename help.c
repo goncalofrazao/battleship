@@ -10,5 +10,10 @@ void help_message()
             \
             \
             \
+            \
+            \
+            \
+            \
+            \
             \n");
 }
