@@ -4,7 +4,7 @@ CC = gcc #compiler
 CFLAGS = -Wall -std=c11 -g  #-O3
 
 
-OBJECTS = main.o restricoes.o pieces.o board.o help.o #objects
+OBJECTS = main.o restricoes.o pieces.o board.o help.o input_check.o #objects
 
 all: $(PROJECT_NAME)
 
@@ -21,6 +21,7 @@ pieces.o: pieces.c pieces.h headers.h
 
 board.o: board.c board.h headers.h
 
+input_check.o: input_check.c input_check.h headers.h help.h
 
 clean:
 	rm -f $(PROJECT_NAME) *.o

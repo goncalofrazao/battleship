@@ -3,12 +3,12 @@
 #include "pieces.h"
 #include "board.h"
 #include "help.h"
-
+#include "input_check.h"
 
 int main(int argc, char **argv)
 {
-    int columns = 0;                                    // variavel que guarda o numero de colunas
-    int lines = 0;                                      // variavel que guarda o numero de linhas
+    int columns = 9;                                    // variavel que guarda o numero de colunas
+    int lines = 9;                                      // variavel que guarda o numero de linhas
     int global_id = 0;                                  // id global das peças
     int board[15][24] = {0};                            // board predefinida com dimensoes maxima
     int modo[] = {0, 1, 1};                             // modo[0] = modo jogo :: modo[1] = modo posicionamento :: modo[2] = modo disparo
@@ -21,124 +21,61 @@ int main(int argc, char **argv)
             {
             case 'h':
                 help_message();
+                return -1;
                 break;
 
             case 't':
                 sscanf(argv[i + 1], "%dx%d", &lines, &columns);
-                if (columns % 3 != 0 || columns < 9 || columns >24){
-                    printf("invalid input\n");
-                    help_message();
-                    return -1;
-                }
-                if (lines % 3 != 0 || lines < 9 || lines > 15){
-                    printf("invalid input\n");
-                    help_message();
-                    return -1;
-                }
                 break;
 
             case 'j':
-                switch (atoi(argv[i+1]))
-                {
-                case 0:
-                    modo[0] = 0;
-                    break;
-                
-                case 1:
-                    modo[0] = 1;
-                    break;
-
-                case 2:
-                    modo[0] = 2;
-                    break;
-
-                default:
-                    printf("invalid input\n");
-                    help_message();
-                    return -1;
-                    break;
-                }
+                modo[0] = (atoi(argv[i+1]));
                 break;
 
             case 'p':
-                switch (atoi(argv[i+1]))
-                {
-                case 1:
-                    modo[1] = 1;
-                    break;
-                
-                case 2:
-                    modo[1] = 2;
-                    break;
-
-                default:
-                    printf("invalid input\n");
-                    help_message();
-                    return -1;
-                    break;
-                }
+                modo[1] = (atoi(argv[i+1]));
                 break;
 
             case 'd':
-                switch (atoi(argv[i+1]))
-                {
-                case 1:
-                    modo[2] = 1;
-                    break;
-                
-                case 2:
-                    modo[2] = 2;
-                    break;
-
-                case 3:
-                    modo[2] = 3;
-                    break;
-
-                default:
-                    printf("invalid input\n");
-                    help_message();
-                    return -1;
-                    break;
-                }
+                modo[2] = (atoi(argv[i+1]));
                 break;
 
             case '1':
-                
+                p_num[0] = (atoi(argv[i+1]));
                 break;
 
             case '2':
-                
+                p_num[1] = (atoi(argv[i+1]));
                 break;
 
             case '3':
-                
+                p_num[2] = (atoi(argv[i+1]));
                 break;
 
             case '4':
-                
+                p_num[3] = (atoi(argv[i+1]));
                 break;
 
             case '5':
-                
+                p_num[4] = (atoi(argv[i+1]));
                 break;
 
             case '6':
-                
+                p_num[5] = (atoi(argv[i+1]));
                 break;
 
             case '7':
-                
+                p_num[6] = (atoi(argv[i+1]));
                 break;
 
             case '8':
-                
+                p_num[7] = (atoi(argv[i+1]));
                 break;
 
             default:
                 break;
             }
         }
-
         /*
         if (strcmp(argv[i], "-t") == 0){
             if (argv[i + 1][0] != '-'){
@@ -166,6 +103,11 @@ int main(int argc, char **argv)
         }
         */
     }
+    int checker = check(lines, columns, modo, p_num);
+    if (checker == -1)
+        return -1;
+    
+    board_printer(board, lines, columns);
     //global_id = atoi(argv[argc - 1]);
     /*
     while (global_id < 43){
