@@ -175,7 +175,7 @@ int main(int argc, char **argv)
     }
     */
 
-
+    printf("%d    %d    %d\n", modo[0], modo[1], modo[2]);
 
     return 0;
 }
