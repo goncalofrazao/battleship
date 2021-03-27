@@ -26,10 +26,12 @@ int main(int argc, char **argv)
             case 't':
                 sscanf(argv[i + 1], "%dx%d", &lines, &columns);
                 if (columns % 3 != 0 || columns < 9 || columns >24){
+                    printf("invalid input\n");
                     help_message();
                     return -1;
                 }
                 if (lines % 3 != 0 || lines < 9 || lines > 15){
+                    printf("invalid input\n");
                     help_message();
                     return -1;
                 }
@@ -51,6 +53,7 @@ int main(int argc, char **argv)
                     break;
 
                 default:
+                    printf("invalid input\n");
                     help_message();
                     return -1;
                     break;
@@ -69,6 +72,7 @@ int main(int argc, char **argv)
                     break;
 
                 default:
+                    printf("invalid input\n");
                     help_message();
                     return -1;
                     break;
@@ -91,11 +95,11 @@ int main(int argc, char **argv)
                     break;
 
                 default:
+                    printf("invalid input\n");
                     help_message();
                     return -1;
                     break;
                 }
-                break;
                 break;
 
             case '1':
