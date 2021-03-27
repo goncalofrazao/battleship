@@ -1,10 +1,11 @@
-PROJECT_NAME = wargame #target file name
+PROJECT_NAME = bin/wargame #target file name
+OBJDIR = obj #objects target
+
 
 CC = gcc #compiler
 CFLAGS = -Wall -std=c11 -g  #-O3
 
-
-OBJECTS = main.o restricoes.o pieces.o board.o help.o input_check.o #objects
+OBJECTS = $(OBJDIR) main.o restricoes.o pieces.o board.o help.o input_check.o #objects
 
 all: $(PROJECT_NAME)
 

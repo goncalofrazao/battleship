@@ -17,6 +17,11 @@ int main(int argc, char **argv)
 
     for(int i = 1; i < argc; i++){
         if (argv[i][0] == '-'){
+            if (strlen(argv[i+1]) > 2){
+                printf("-1\n");
+                help_message();
+                return -1;
+            }
             switch (argv[i][1])
             {
             case 'h':
