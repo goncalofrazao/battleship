@@ -52,9 +52,37 @@ int restricao2()
 
 }
 
-int restricao3()
+int restricao3(int p_num[8])
 {
-
+    if (p_num[7] > p_num[6]){
+        printf(".|.\n");
+        return -1;
+    }
+    if (p_num[6] > p_num[5]){
+        printf(".|.\n");
+        return -1;
+    }
+    if (p_num[5] > p_num[4]){
+        printf(".|.\n");
+        return -1;
+    }
+    if (p_num[4] > p_num[3]){
+        printf(".|.\n");
+        return -1;
+    }
+    if (p_num[3] > p_num[2]){
+        printf(".|.\n");
+        return -1;
+    }
+    if (p_num[2] > p_num[1]){
+        printf(".|.\n");
+        return -1;
+    }
+    if (p_num[1] > p_num[0]){
+        printf(".|.\n");
+        return -1;
+    }
+    return 1;
 }
 
 int restricao4()

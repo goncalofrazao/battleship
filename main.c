@@ -83,36 +83,15 @@ int main(int argc, char **argv)
                 break;
             }
         }
-        /*
-        if (strcmp(argv[i], "-t") == 0){
-            if (argv[i + 1][0] != '-'){
-                sscanf(argv[i + 1], "%dx%d", &lines, &columns);
-                //char* aux = strchr(argv[i+1], 'x');
-                //printf("%s\n", aux);
-                //columns = atoi(aux + 1);
-                //(*aux) = '\0';
-                //lines = atoi(argv[i+1]);
-                printf("%d\n", lines);
-                printf("%d\n", columns);
-                if (columns % 3 != 0 || columns < 9 || columns >24){
-                    printf("-1\n");
-                    return -1;
-                }
-                if (lines % 3 != 0 || lines < 9 || lines > 15){
-                    printf("-1\n");
-                    return -1;
-                }
-            }
-            else{
-                printf("-1\n");
-                return -1;
-            }
-        }
-        */
     }
-    int checker = check(lines, columns, modo, p_num, flag_d_in);
-    if (checker == -1)
+
+    //int input_checker = check(lines, columns, modo, p_num, flag_d_in);
+    //int restricao_3 = restricao3(p_num);
+    if (check(lines, columns, modo, p_num, flag_d_in) == -1 || restricao3(p_num) == -1){
+        printf("-1\n");
+        help_message();
         return -1;
+    }
     
     board_printer(board, lines, columns);
     //global_id = atoi(argv[argc - 1]);
