@@ -23,4 +23,4 @@ board.o: board.c board.h headers.h
 input_check.o: input_check.c input_check.h headers.h help.h
 
 clean:
-	rm $(OBJECTS) -f $(PROJECT_NAME) *.o
+	rm -f $(PROJECT_NAME) *.o
