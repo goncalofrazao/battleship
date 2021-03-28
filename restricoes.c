@@ -94,7 +94,6 @@ int restricao3(int p_num[8])
 
 int restricao4(int lines, int columns, int p_num[8])
 {
-    printf("fds\n");
     int sum = 0;
     for (int i = 0; i < 8; i++)
         sum += p_num[i];

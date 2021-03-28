@@ -47,7 +47,7 @@ void help_message() {
     -7 <arg> ----- arg must be an integer\n\
     -8 <arg> ----- arg must be an integer\n\
     \n\
-	Restrictions:\n\
+    Restrictions:\n\
     1 ----- Edges and vertices of pieces must be space free. \n\
     2 ----- Max number of pieces: lines * colunms/ 9\n\
     3 ----- Not allowed to have more larger pieces smaller pieces. \n\
