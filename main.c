@@ -13,6 +13,7 @@ int main(int argc, char **argv)
     int board[15][24] = {0};                            // board predefinida com dimensoes maxima
     int modo[] = {0, 1, 1};                             // modo[0] = modo jogo :: modo[1] = modo posicionamento :: modo[2] = modo disparo
     int p_num[8] = {0};                                 // p_num[i] = numero de peças to tipo i-1 
+    int flag_d_in = 0;                                  // flag_d_in diz se houve ou nao um input do modo de disparo
     srand(time(NULL));                                  // inicializaçao do timer
 
     for(int i = 1; i < argc; i++){
@@ -43,6 +44,7 @@ int main(int argc, char **argv)
 
             case 'd':
                 modo[2] = (atoi(argv[i+1]));
+                flag_d_in = 1;
                 break;
 
             case '1':
@@ -108,7 +110,7 @@ int main(int argc, char **argv)
         }
         */
     }
-    int checker = check(lines, columns, modo, p_num);
+    int checker = check(lines, columns, modo, p_num, flag_d_in);
     if (checker == -1)
         return -1;
     
