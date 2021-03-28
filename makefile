@@ -1,11 +1,9 @@
 PROJECT_NAME = bin/wargame #target file name
-OBJDIR = obj #objects target
-
 
 CC = gcc #compiler
 CFLAGS = -Wall -std=c11 -g  #-O3
 
-OBJECTS = $(OBJDIR) main.o restricoes.o pieces.o board.o help.o input_check.o #objects
+OBJECTS = main.o restricoes.o pieces.o board.o help.o input_check.o #objects
 
 all: $(PROJECT_NAME)
 
