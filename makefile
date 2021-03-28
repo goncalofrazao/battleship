@@ -1,4 +1,4 @@
-PROJECT_NAME = bin/wargame #target file name
+PROJECT_NAME = wargame #target file name
 
 CC = gcc #compiler
 CFLAGS = -Wall -std=c11 -g  #-O3
@@ -23,4 +23,4 @@ board.o: board.c board.h headers.h
 input_check.o: input_check.c input_check.h headers.h help.h
 
 clean:
-	rm -f $(PROJECT_NAME) *.o
+	rm $(OBJECTS) -f $(PROJECT_NAME) *.o
