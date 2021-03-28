@@ -87,7 +87,7 @@ int main(int argc, char **argv)
 
     //int input_checker = check(lines, columns, modo, p_num, flag_d_in);
     //int restricao_3 = restricao3(p_num);
-    if (check(lines, columns, modo, p_num, flag_d_in) == -1 || restricao3(p_num) == -1){
+    if (check(lines, columns, modo, p_num, flag_d_in) == -1 || restricao3(p_num) == -1 || restricao2(lines, columns, p_num) == -1 || restricao4(lines, columns, p_num) == -1){
         printf("-1\n");
         help_message();
         return -1;

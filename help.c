@@ -48,13 +48,12 @@ void help_message() {
     -8 <arg> ----- arg must be an integer\n\
     \n\
 	Restrictions:\n\
-	 1 ----- Pieces can never have edges or vertices in contact with other pieces\n\
-	 2 ----- The maximum number of pieces per board is limited to: lines * colunms/ 9\n\
-	 3 ----- In a game, the rule is to never have more pieces of a larger type than pieces of a smaller type\n\
-	 4 ----- Total number of pieces must not exceed 50 percent of the number of 3x3 matrices on a board\n\
-	 5 ----- The options of -d [1-3] are only valid when the game mode is j2_mode. Otherwise, the help message should be printed in stdout\n\
-	 6 ----- The options - [1-8] indicate the number of pieces of each type.In game mode 0 and 1, they are only valid when considering the
-	 			mode_p2 positioning\n\
-
+    1 ----- Edges and vertices of pieces must be space free. \n\
+    2 ----- Max number of pieces: lines * colunms/ 9\n\
+    3 ----- Not allowed to have more larger pieces smaller pieces. \n\
+    4 ----- Max number of pieces: les than 50 %% of max number of pieces. \n\
+    5 ----- The options of -d [1-3] are only available when in the game mode 2. \n\
+    6 ----- In game mode 0 and 1, -[1-8] are only available in positioning mode 2.\n\
+    \n\
 	 \n");
 }
