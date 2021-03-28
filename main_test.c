@@ -1,7 +1,7 @@
 #include "headers.h"
 #include "restricoes.h"
 #include "pieces.h"
-
+//./wargame ola pilinha gostosa
 int main(int argc, char **argv)
 {
     if (argc == 2)
