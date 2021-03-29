@@ -26,8 +26,8 @@ num tabuleiro. Por exemplo:
 
 int restricao1(int x, int y, int global_id, int columns, int lines, int board[17][26])
 {
-    for (int i = 0; i < 5; i++){
-        for (int d = 0; d < 5; d++){
+    for (int i = 1; i < 4; i++){
+        for (int d = 1; d < 4; d++){
             if (board [x - 1 + i][y - 1 + d] == -1 && cabra[global_id][i][d] > 0)
                 return -1;
         }

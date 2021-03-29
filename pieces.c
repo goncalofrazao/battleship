@@ -191,7 +191,7 @@ const int cabra[43][5][5] = {  {
                         { 0,-1,-1,-1, 0},},
 
                         {
-                        { 0, 0,-1, 3, -1},
+                        { 0, 0,-1, 0, -1},
                         { 0, 0, 0, 3, -1},
                         { 0, 0, 0, 3, -1},
                         { 0, 0, 0, 3, -1},
@@ -355,7 +355,8 @@ void positioning_pieces(int x, int y, int global_id, int board[17][26])
 {
     for (int i = 0; i < 5; i++){
         for (int d = 0; d < 5; d++){
-            board [x - 1 + i][y - 1 + d] = cabra[global_id][i][d];
+            if (cabra[global_id][i][d] > 0 || (cabra[global_id][i][d] == -1 && board [x - 1 + i][y - 1 + d] == 0))
+                board [x - 1 + i][y - 1 + d] = cabra[global_id][i][d];
         }
     }
     

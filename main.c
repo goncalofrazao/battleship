@@ -104,6 +104,7 @@ int main(int argc, char **argv)
             }
             else {
                 positioning_pieces(x, y, global_id, board);
+                break;
             }
         }
         if (x == (columns - 2) && y == (lines - 2)){
