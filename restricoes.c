@@ -22,29 +22,17 @@ num tabuleiro. Por exemplo:
 
 #include "headers.h"
 #include "restricoes.h"
+#include "pieces.h"
 
-int restricao0()
+int restricao1(int x, int y, int global_id, int columns, int lines, int board[17][26])
 {
-
-}
-
-int restricao1(int x, int y, int global_id, int columns, int lines)
-{
-    columns--;
-    lines--;
-    int flag_up = 0, flag_left = 0, flag_down = 0, flag_right = 0;
-    if (x + 3 > columns){
-        flag_right = 1;
+    for (int i = 0; i < 5; i++){
+        for (int d = 0; d < 5; d++){
+            if (board [x - 1 + i][y - 1 + d] == -1 && cabra[global_id][i][d] > 0)
+                return -1;
+        }
     }
-    if (x - 1 < 0){
-        flag_left = 1;
-    }
-    if (y - 1 < 0){
-        flag_up = 1;
-    }
-    if (y + 3 > lines){
-        flag_down = 1;
-    }
+    return 1;
 }
 
 int restricao2(int lines, int columns, int p_num[8])

@@ -5,15 +5,17 @@
 #include "help.h"
 #include "input_check.h"
 
+
+
 int main(int argc, char **argv)
 {
-    int columns = 9;                                    // variavel que guarda o numero de colunas
-    int lines = 9;                                      // variavel que guarda o numero de linhas
+    int columns = 9;                                    // numero de colunas
+    int lines = 9;                                      // numero de linhas
     int global_id = 0;                                  // id global das peças
-    int board[15][24] = {0};                            // board predefinida com dimensoes maxima
-    int modo[] = {0, 1, 1};                             // modo[0] = modo jogo :: modo[1] = modo posicionamento :: modo[2] = modo disparo
+    int board[17][26] = {0};                            // board predefinida com dimensoes maximas
+    int modo[] = {0, 1, 1};                             // modo[0] = modo de jogo :: modo[1] = modo de posicionamento :: modo[2] = modo de disparo
     int p_num[8] = {0};                                 // p_num[i] = numero de peças to tipo i-1 
-    int flag_d_in = 0;                                  // flag_d_in diz se houve ou nao um input do modo de disparo
+    int flag_d_in = 0;                                  // regista a alteração do modo de disparo
     srand(time(NULL));                                  // inicializaçao do timer
 
     for(int i = 1; i < argc; i++){
@@ -85,29 +87,54 @@ int main(int argc, char **argv)
         }
     }
 
-    //int input_checker = check(lines, columns, modo, p_num, flag_d_in);
-    //int restricao_3 = restricao3(p_num);
-    if (check(lines, columns, modo, p_num, flag_d_in) == -1 || restricao3(p_num) == -1 || restricao2(lines, columns, p_num) == -1 || restricao4(lines, columns, p_num) == -1){
+    if (check(lines, columns, modo, p_num, flag_d_in) == -1 || restricao3(p_num) == -1 || \
+        restricao2(lines, columns, p_num) == -1 || restricao4(lines, columns, p_num) == -1){
         printf("-1\n");
         help_message();
         return -1;
     }
-    
+    int x = 1;
+    int y = 1;    
+    while (1){
+        int i = 0;
+        while (i < 3){
+            global_id = (rand() % 43);
+            if (restricao1(x, y, global_id, columns, lines, board) == -1){
+                i++;
+            }
+            else {
+                positioning_pieces(x, y, global_id, board);
+            }
+        }
+        if (x == (columns - 2) && y == (lines - 2)){
+            break;
+        }
+        else if (x == (columns - 2)){
+            x = 1;
+            y += 3;
+        }
+        else {
+            x += 3;
+        }
+    }
+
     board_printer(board, lines, columns);
+    
     //global_id = atoi(argv[argc - 1]);
     /*
+    global_id = 1;
     while (global_id < 43){
         printf("%d\n", global_id);
-        positioning_pieces(0 , 0, global_id, board);
+        positioning_pieces(3 , 3, global_id, board);
         //positioning_pieces(6 , 6, 42, board);
-
         board_printer(board, lines, columns);
+        printf("\n\n");
         global_id++;
         clear_board(board, lines, columns);
     }
     */
 
-    printf("%d    %d    %d\n", modo[0], modo[1], modo[2]);
+    //printf("%d    %d    %d\n", modo[0], modo[1], modo[2]);
 
     return 0;
 }

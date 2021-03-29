@@ -14,7 +14,7 @@ main.o: main.c headers.h restricoes.h pieces.h board.h help.h
 
 help.o: help.c help.h headers.h
 
-restricoes.o: restricoes.c restricoes.h headers.h
+restricoes.o: restricoes.c restricoes.h headers.h pieces.h
 
 pieces.o: pieces.c pieces.h headers.h
 
