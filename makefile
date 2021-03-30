@@ -10,17 +10,17 @@ all: $(PROJECT_NAME)
 $(PROJECT_NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $(PROJECT_NAME)
 
-main.o: main.c headers.h restricoes.h pieces.h board.h help.h
+main.o: main.c
 
-help.o: help.c help.h headers.h
+help.o: help.c help.h
 
-restricoes.o: restricoes.c restricoes.h headers.h pieces.h
+restricoes.o: restricoes.c restricoes.h
 
-pieces.o: pieces.c pieces.h headers.h
+pieces.o: pieces.c pieces.h
 
-board.o: board.c board.h headers.h
+board.o: board.c board.h
 
-input_check.o: input_check.c input_check.h headers.h help.h
+input_check.o: input_check.c input_check.h
 
 clean:
 	rm -f $(PROJECT_NAME) *.o

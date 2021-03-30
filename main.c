@@ -18,81 +18,99 @@ int main(int argc, char **argv)
     int flag_d_in = 0;                                  // regista a alteração do modo de disparo
     srand(time(NULL));                                  // inicializaçao do timer
 
-    for(int i = 1; i < argc; i++){
-        if (argv[i][0] == '-'){
-            if (strlen(argv[i]) > 2){
-                printf("-1\n");
-                help_message();
-                return -1;
+    if (argc > 1){
+        for(int i = 1; i < argc; i++){
+            if (argv[i][0] == '-'){
+                if (strlen(argv[i]) > 2){
+                    printf("-1\n");
+                    help_message();
+                    return -1;
+                }
+                if (i == (argc - 1) && argv[i][0] == '-'){
+                    printf("-1\n");
+                    help_message();
+                    return -1;
+                }
+                switch (argv[i][1])
+                {
+                case 'h':
+                    help_message();
+                    return -1;
+                    break;
+
+                case 't':
+                    sscanf(argv[i + 1], "%dx%d", &lines, &columns);
+                    break;
+
+                case 'j':
+                    modo[0] = (atoi(argv[i+1]));
+                    break;
+
+                case 'p':
+                    modo[1] = (atoi(argv[i+1]));
+                    break;
+
+                case 'd':
+                    modo[2] = (atoi(argv[i+1]));
+                    flag_d_in = 1;
+                    break;
+
+                case '1':
+                    p_num[0] = (atoi(argv[i+1]));
+                    break;
+
+                case '2':
+                    p_num[1] = (atoi(argv[i+1]));
+                    break;
+
+                case '3':
+                    p_num[2] = (atoi(argv[i+1]));
+                    break;
+
+                case '4':
+                    p_num[3] = (atoi(argv[i+1]));
+                    break;
+
+                case '5':
+                    p_num[4] = (atoi(argv[i+1]));
+                    break;
+
+                case '6':
+                    p_num[5] = (atoi(argv[i+1]));
+                    break;
+
+                case '7':
+                    p_num[6] = (atoi(argv[i+1]));
+                    break;
+
+                case '8':
+                    p_num[7] = (atoi(argv[i+1]));
+                    break;
+
+                default:
+                    printf("-1");
+                    help_message();
+                    return -1;
+                    break;
+                }
             }
-            switch (argv[i][1])
-            {
-            case 'h':
-                help_message();
-                return -1;
-                break;
-
-            case 't':
-                sscanf(argv[i + 1], "%dx%d", &lines, &columns);
-                break;
-
-            case 'j':
-                modo[0] = (atoi(argv[i+1]));
-                break;
-
-            case 'p':
-                modo[1] = (atoi(argv[i+1]));
-                break;
-
-            case 'd':
-                modo[2] = (atoi(argv[i+1]));
-                flag_d_in = 1;
-                break;
-
-            case '1':
-                p_num[0] = (atoi(argv[i+1]));
-                break;
-
-            case '2':
-                p_num[1] = (atoi(argv[i+1]));
-                break;
-
-            case '3':
-                p_num[2] = (atoi(argv[i+1]));
-                break;
-
-            case '4':
-                p_num[3] = (atoi(argv[i+1]));
-                break;
-
-            case '5':
-                p_num[4] = (atoi(argv[i+1]));
-                break;
-
-            case '6':
-                p_num[5] = (atoi(argv[i+1]));
-                break;
-
-            case '7':
-                p_num[6] = (atoi(argv[i+1]));
-                break;
-
-            case '8':
-                p_num[7] = (atoi(argv[i+1]));
-                break;
-
-            default:
-                break;
+            else {
+                if (argv[i-1][0] != '-'){
+                    printf("-1");
+                    help_message();
+                    return -1;
+                }
             }
         }
     }
-
+    
     if (check(lines, columns, modo, p_num, flag_d_in) == -1 || restricao3(p_num) == -1 || \
         restricao2(lines, columns, p_num) == -1 || restricao4(lines, columns, p_num) == -1){
         printf("-1\n");
         help_message();
         return -1;
     }
+    
     int x = 1;
     int y = 1;    
     while (1){
@@ -118,8 +136,7 @@ int main(int argc, char **argv)
             x += 3;
         }
     }
-
-    board_printer(board, lines, columns);
+    
     
     //global_id = atoi(argv[argc - 1]);
     /*
@@ -134,8 +151,8 @@ int main(int argc, char **argv)
         clear_board(board, lines, columns);
     }
     */
-
-    //printf("%d    %d    %d\n", modo[0], modo[1], modo[2]);
+    board_printer(board, lines, columns);
+    printf("j: %d    p: %d    d: %d\n", modo[0], modo[1], modo[2]);
 
     return 0;
 }
