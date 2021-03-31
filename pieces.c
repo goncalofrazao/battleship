@@ -355,9 +355,63 @@ void positioning_pieces(int x, int y, int global_id, int board[17][26])
 {
     for (int i = 0; i < 5; i++){
         for (int d = 0; d < 5; d++){
-            if (cabra[global_id][i][d] > 0 || (cabra[global_id][i][d] == -1 && board [x - 1 + i][y - 1 + d] == 0))
-                board [x - 1 + i][y - 1 + d] = cabra[global_id][i][d];
+            if (cabra[global_id][i][d] > 0 || (cabra[global_id][i][d] == -1 && board [y - 1 + i][x - 1 + d] == 0))
+                board [y - 1 + i][x - 1 + d] = cabra[global_id][i][d];
         }
     }
     
+}
+
+int instance_generator(int type)
+{
+    int instance = 0;
+    switch (type)
+    {
+    case 1:
+        instance = (rand() % 9) + 1;
+        break;
+    
+    case 2:
+        instance = (rand() % 12) + 1;
+        break;
+    
+    case 3:
+        instance = (rand() % 6) + 1;
+        break;
+    
+    case 4:
+    case 5:
+    case 6:
+        instance = (rand() % 4) + 1;
+        break;
+    
+    case 7:
+        instance = (rand() % 2) + 1;
+        break;
+
+    case 8: 
+        instance = 1;
+    default:
+        instance = 0;
+        break;
+    }
+    return instance;
+}
+
+int max_instance(int type)
+{
+    int max = 0;
+    if (type == 1)
+        max = 9;
+    if (type == 2)
+        max = 12;
+    if (type == 3)
+        max = 6;
+    if (type > 3 && type < 7)
+        max = 4;
+    if (type == 7)
+        max = 2;
+    if (type == 8)
+        max = 1;
+    return max;
 }

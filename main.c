@@ -4,7 +4,7 @@
 #include "board.h"
 #include "help.h"
 #include "input_check.h"
-
+#include "modo_p.h"
 
 
 int main(int argc, char **argv)
@@ -14,7 +14,7 @@ int main(int argc, char **argv)
     int global_id = 0;                                  // id global das peças
     int board[17][26] = {0};                            // board predefinida com dimensoes maximas
     int modo[] = {0, 1, 1};                             // modo[0] = modo de jogo :: modo[1] = modo de posicionamento :: modo[2] = modo de disparo
-    int p_num[8] = {0};                                 // p_num[i] = numero de peças to tipo i-1 
+    int p_num[9] = {0};                                 // p_num[i] = numero de peças to tipo i-1 
     int flag_d_in = 0;                                  // regista a alteração do modo de disparo
     srand(time(NULL));                                  // inicializaçao do timer
 
@@ -40,6 +40,7 @@ int main(int argc, char **argv)
 
                 case 't':
                     sscanf(argv[i + 1], "%dx%d", &lines, &columns);
+                    printf("lines: %d\ncolumns: %d\n", lines,columns);
                     break;
 
                 case 'j':
@@ -56,35 +57,36 @@ int main(int argc, char **argv)
                     break;
 
                 case '1':
-                    p_num[0] = (atoi(argv[i+1]));
-                    break;
-
-                case '2':
                     p_num[1] = (atoi(argv[i+1]));
+                    printf("peças tipo 1: %d\n", p_num[1]);
                     break;
-
-                case '3':
+                case '2':
                     p_num[2] = (atoi(argv[i+1]));
+                    printf("peças tipo 2: %d\n", p_num[2]);
                     break;
-
-                case '4':
+                case '3':
                     p_num[3] = (atoi(argv[i+1]));
+                    printf("peças tipo 3: %d\n", p_num[3]);
                     break;
-
-                case '5':
+                case '4':
                     p_num[4] = (atoi(argv[i+1]));
+                    printf("peças tipo 4: %d\n", p_num[4]);
                     break;
-
-                case '6':
+                case '5':
                     p_num[5] = (atoi(argv[i+1]));
+                    printf("peças tipo 5: %d\n", p_num[5]);
                     break;
-
-                case '7':
+                case '6':
                     p_num[6] = (atoi(argv[i+1]));
+                    printf("peças tipo 6: %d\n", p_num[6]);
                     break;
-
-                case '8':
+                case '7':
                     p_num[7] = (atoi(argv[i+1]));
+                    printf("peças tipo 7: %d\n", p_num[7]);
+                    break;
+                case '8':
+                    p_num[8] = (atoi(argv[i+1]));
+                    printf("peças tipo 8: %d\n", p_num[8]);
                     break;
 
                 default:
@@ -103,7 +105,7 @@ int main(int argc, char **argv)
             }
         }
     }
-    
+
     if (check(lines, columns, modo, p_num, flag_d_in) == -1 || restricao3(p_num) == -1 || \
         restricao2(lines, columns, p_num) == -1 || restricao4(lines, columns, p_num) == -1){
         printf("-1\n");
@@ -111,46 +113,18 @@ int main(int argc, char **argv)
         return -1;
     }
     
-    int x = 1;
-    int y = 1;    
-    while (1){
-        int i = 0;
-        while (i < 3){
-            global_id = (rand() % 43);
-            if (restricao1(x, y, global_id, columns, lines, board) == -1){
-                i++;
-            }
-            else {
-                positioning_pieces(x, y, global_id, board);
-                break;
-            }
-        }
-        if (x == (columns - 2) && y == (lines - 2)){
-            break;
-        }
-        else if (x == (columns - 2)){
-            x = 1;
-            y += 3;
-        }
-        else {
-            x += 3;
-        }
+    int n_pecas = 0;
+    for (int i = 0; i < 9; i++)
+        n_pecas += p_num[i];
+    int type = 0;
+    p_num[0] = lines * columns / 9 - n_pecas;
+    while(type < 9){
+        global_id = global_id_returner(type, max_instance(type));
+        printf("%d = %d\n", type, global_id);
+        type++;
     }
-    
-    
-    //global_id = atoi(argv[argc - 1]);
-    /*
-    global_id = 1;
-    while (global_id < 43){
-        printf("%d\n", global_id);
-        positioning_pieces(3 , 3, global_id, board);
-        //positioning_pieces(6 , 6, 42, board);
-        board_printer(board, lines, columns);
-        printf("\n\n");
-        global_id++;
-        clear_board(board, lines, columns);
-    }
-    */
+    //modo_p1(lines, columns, board);
+    modo_p2(lines, columns, board, p_num);
     board_printer(board, lines, columns);
     printf("j: %d    p: %d    d: %d\n", modo[0], modo[1], modo[2]);
 

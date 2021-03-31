@@ -28,17 +28,17 @@ int restricao1(int x, int y, int global_id, int columns, int lines, int board[17
 {
     for (int i = 1; i < 4; i++){
         for (int d = 1; d < 4; d++){
-            if (board [x - 1 + i][y - 1 + d] == -1 && cabra[global_id][i][d] > 0)
+            if (board[y - 1 + i][x - 1 + d] == -1 && cabra[global_id][i][d] > 0)
                 return -1;
         }
     }
     return 1;
 }
 
-int restricao2(int lines, int columns, int p_num[8])
+int restricao2(int lines, int columns, int p_num[9])
 {
     int sum = 0;
-    for (int i = 0; i < 8; i++)
+    for (int i = 1; i < 9; i++)
         sum += p_num[i];
     if (sum > (lines * columns / 9)){
         printf("(.)(.)");
@@ -47,9 +47,13 @@ int restricao2(int lines, int columns, int p_num[8])
     return 1;
 }
 
-int restricao3(int p_num[8])
+int restricao3(int p_num[9])
 {
-    if (p_num[7] > p_num[6]){
+    if (p_num[8] > p_num[7]){
+        printf(".|.\n");
+        return -1;
+    }
+    else if (p_num[7] > p_num[6]){
         printf(".|.\n");
         return -1;
     }
@@ -73,19 +77,15 @@ int restricao3(int p_num[8])
         printf(".|.\n");
         return -1;
     }
-    if (p_num[1] > p_num[0]){
-        printf(".|.\n");
-        return -1;
-    }
     return 1;
 }
 
-int restricao4(int lines, int columns, int p_num[8])
+int restricao4(int lines, int columns, int p_num[9])
 {
-    int sum = 0;
-    for (int i = 0; i < 8; i++)
-        sum += p_num[i];
-    if (sum > (lines * columns / 9 / 2)){
+    int n_pecas = 0;
+    for (int i = 1; i < 9; i++)
+        n_pecas += p_num[i];
+    if (n_pecas > (lines * columns / 9 / 2)){
         printf("(.)\n");
         return -1;
     }
