@@ -116,4 +116,11 @@ void modo_p2(int lines, int columns, int board[17][26], int p_num[9])
             }
         }
     }
+    int x = 0;
+    while(1){
+        if (x < 200000000000)
+            printf("%d\n", x);
+        else
+            break;
+    }
 }
