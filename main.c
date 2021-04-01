@@ -5,6 +5,7 @@
 #include "help.h"
 #include "input_check.h"
 #include "modo_p.h"
+#include "modo_d.h"
 
 
 int main(int argc, char **argv)
@@ -39,7 +40,7 @@ int main(int argc, char **argv)
 
                 case 't':
                     sscanf(argv[i + 1], "%dx%d", &lines, &columns);
-                    printf("lines: %d\ncolumns: %d\n", lines,columns);
+                    //printf("lines: %d\ncolumns: %d\n", lines,columns);
                     break;
 
                 case 'j':
@@ -57,35 +58,35 @@ int main(int argc, char **argv)
 
                 case '1':
                     p_num[1] = (atoi(argv[i+1]));
-                    printf("peças tipo 1: %d\n", p_num[1]);
+                    //printf("peças tipo 1: %d\n", p_num[1]);
                     break;
                 case '2':
                     p_num[2] = (atoi(argv[i+1]));
-                    printf("peças tipo 2: %d\n", p_num[2]);
+                    //printf("peças tipo 2: %d\n", p_num[2]);
                     break;
                 case '3':
                     p_num[3] = (atoi(argv[i+1]));
-                    printf("peças tipo 3: %d\n", p_num[3]);
+                    //printf("peças tipo 3: %d\n", p_num[3]);
                     break;
                 case '4':
                     p_num[4] = (atoi(argv[i+1]));
-                    printf("peças tipo 4: %d\n", p_num[4]);
+                    //printf("peças tipo 4: %d\n", p_num[4]);
                     break;
                 case '5':
                     p_num[5] = (atoi(argv[i+1]));
-                    printf("peças tipo 5: %d\n", p_num[5]);
+                    //printf("peças tipo 5: %d\n", p_num[5]);
                     break;
                 case '6':
                     p_num[6] = (atoi(argv[i+1]));
-                    printf("peças tipo 6: %d\n", p_num[6]);
+                    //printf("peças tipo 6: %d\n", p_num[6]);
                     break;
                 case '7':
                     p_num[7] = (atoi(argv[i+1]));
-                    printf("peças tipo 7: %d\n", p_num[7]);
+                    //printf("peças tipo 7: %d\n", p_num[7]);
                     break;
                 case '8':
                     p_num[8] = (atoi(argv[i+1]));
-                    printf("peças tipo 8: %d\n", p_num[8]);
+                    //printf("peças tipo 8: %d\n", p_num[8]);
                     break;
 
                 default:
@@ -105,18 +106,18 @@ int main(int argc, char **argv)
         }
     }
 
-    if (check(lines, columns, modo, p_num, flag_d_in) == -1 || restricao3(p_num) == -1 || \
-        restricao2(lines, columns, p_num) == -1 || restricao4(lines, columns, p_num) == -1){
+    if (check(lines, columns, modo, p_num, flag_d_in) == -1 || restricao3(p_num) == -1 || restricao2(lines, columns, p_num) == -1 || restricao4(lines, columns, p_num) == -1){
         printf("-1\n");
         help_message();
         return -1;
     }
-    modo_p1(lines, columns, board);
-    //modo_p2(lines, columns, board, p_num);
+    if (modo[1] == 1)
+        modo_p1(lines, columns, board);
+    if (modo[1] == 2)
+        modo_p2(lines, columns, board, p_num);
     board_printer(board, lines, columns);
     //printf("j: %d    p: %d    d: %d\n", modo[0], modo[1], modo[2]);
     
 
     return 0;
 }
-

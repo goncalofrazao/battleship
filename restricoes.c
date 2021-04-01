@@ -28,7 +28,7 @@ int restricao1(int x, int y, int global_id, int columns, int lines, int board[17
 {
     for (int i = 1; i < 4; i++){
         for (int d = 1; d < 4; d++){
-            if (board[y - 1 + i][x - 1 + d] == -1 && cabra[global_id][i][d] > 0)
+            if (board[y - 1 + i][x - 1 + d] == -1 && piece[global_id][i][d] > 0)
                 return -1;
         }
     }

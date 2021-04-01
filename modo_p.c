@@ -25,16 +25,16 @@ void modo_p1(int lines, int columns, int board[17][26])
             positioning_pieces(x, y, 5, board);
         if ((x > (columns - 3)) && (y > (lines - 3))){ // finish positioning
             break;
-            printf("columns:%d   lines: %d\n", x, y);
+            //printf("columns:%d   lines: %d\n", x, y);
         }
         else if (x > (columns - 3) && y < (lines - 3)){ // go to the first block of the next line
             x = 1; // reset x
             y += 3; // increment y
-            printf("columns:%d   lines: %d\n", x, y);
+            //printf("columns:%d   lines: %d\n", x, y);
         }
         else { // go to the next block
             x += 3; // increment x
-            printf("columns:%d   lines: %d\n", x, y);
+            //printf("columns:%d   lines: %d\n", x, y);
         }
     }
 }
@@ -98,29 +98,22 @@ void modo_p2(int lines, int columns, int board[17][26], int p_num[9])
                     break; // e dá break para voltar a tentar colocar o tabuleiro
                 }
                 else if (x > (columns - 3) && y > (lines - 3)){ // se tiver dado break e tiver colocado a ultima peça
-                    printf("lines:%d\ncolumns: %d\n", lines, columns);
+                    //printf("lines:%d\ncolumns: %d\n", lines, columns);
                     break; // dá break do posicionamento
                 }
                 else if (x > (columns - 3)){ // se tiver chegado ao final de uma linha
                     x = 1; // da reset ao x
                     y += 3; // e incrementa o y para a proxima linha
-                    printf("lines:%d\ncolumns: %d\n", lines, columns);
+                    //printf("lines:%d\ncolumns: %d\n", lines, columns);
                 }
                 else { // caso nenhum dos anteriores se verifique
                     x += 3; // incrementa o x para o proximo bloco
-                    printf("lines:%d\ncolumns: %d\n", lines, columns);
+                    //printf("lines:%d\ncolumns: %d\n", lines, columns);
                 }
             }
             if (x > (columns - 3) && y > (lines - 3)){ // se tiver dado break porque estava no ultimo bloco
                 break; // da break porque já colocou o tabuleiro todo
             }
         }
-    }
-    int x = 0;
-    while(1){
-        if (x < 200000000000)
-            printf("%d\n", x);
-        else
-            break;
     }
 }

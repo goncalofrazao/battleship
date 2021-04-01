@@ -1,7 +1,7 @@
 #include "headers.h"
 #include "pieces.h"
 
-const int cabra[43][5][5] = {  {
+const int piece[43][5][5] = {  {
                         { 0, 0, 0, 0, 0},
                         { 0, 0, 0, 0, 0},
                         { 0, 0, 0, 0, 0},
@@ -355,8 +355,8 @@ void positioning_pieces(int x, int y, int global_id, int board[17][26])
 {
     for (int i = 0; i < 5; i++){
         for (int d = 0; d < 5; d++){
-            if (cabra[global_id][i][d] > 0 || (cabra[global_id][i][d] == -1 && board [y - 1 + i][x - 1 + d] == 0))
-                board [y - 1 + i][x - 1 + d] = cabra[global_id][i][d];
+            if (piece[global_id][i][d] > 0 || (piece[global_id][i][d] == -1 && board [y - 1 + i][x - 1 + d] == 0))
+                board[y - 1 + i][x - 1 + d] = piece[global_id][i][d];
         }
     }
     
