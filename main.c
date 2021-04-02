@@ -11,7 +11,6 @@ int main(int argc, char **argv)
 {
     int columns = 9;                                    // numero de colunas
     int lines = 9;                                      // numero de linhas
-    int global_id = 0;                                  // id global das peças
     int board[17][26] = {0};                            // board predefinida com dimensoes maximas
     int modo[] = {0, 1, 1};                             // modo[0] = modo de jogo :: modo[1] = modo de posicionamento :: modo[2] = modo de disparo
     int p_num[9] = {0};                                 // p_num[i] = numero de peças to tipo i-1 
@@ -112,19 +111,8 @@ int main(int argc, char **argv)
         help_message();
         return -1;
     }
-    
-    int n_pecas = 0;
-    for (int i = 0; i < 9; i++)
-        n_pecas += p_num[i];
-    int type = 0;
-    p_num[0] = lines * columns / 9 - n_pecas;
-    while(type < 9){
-        global_id = global_id_returner(type, max_instance(type));
-        printf("%d = %d\n", type, global_id);
-        type++;
-    }
-    //modo_p1(lines, columns, board);
-    modo_p2(lines, columns, board, p_num);
+    modo_p1(lines, columns, board);
+    //modo_p2(lines, columns, board, p_num);
     board_printer(board, lines, columns);
     printf("j: %d    p: %d    d: %d\n", modo[0], modo[1], modo[2]);
 

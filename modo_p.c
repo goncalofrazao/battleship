@@ -13,19 +13,16 @@ void modo_p1(int lines, int columns, int board[17][26])
         int i = 0;
         while (i < 3){
             int global_id = (rand() % 42);
-            if (restricao1(x, y, global_id, columns, lines, board) == -1 && i < 2){
+            if (restricao1(x, y, global_id, columns, lines, board) == -1){
                 i++;
             }
-            /*
-            else if(restricao1(x, y, global_id, columns, lines, board) == -1 && i == 2){
-                positioning_pieces(x, y, 5, board);
-            }
-            */
             else {
                 positioning_pieces(x, y, global_id, board);
                 break;
             }
         }
+        if (i == 3)
+            positioning_pieces(x, y, 5, board);
         if ((x > (columns - 3)) && (y > (lines - 3))){ // finish positioning
             break;
             printf("columns:%d   lines: %d\n", x, y);
