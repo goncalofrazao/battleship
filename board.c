@@ -11,11 +11,15 @@ void board_printer(int board[17][26], int lines, int columns)
             printf("%d ", lines - i + 1);
         */
         for (int j = 1; j <= columns; j++){
-            if (board[i][j] > 9)
-                printf( "%d ", board[i][j] - 10);
-            else if (board[i][j] == 9){
-                printf("0 ");
+            /*
+            if (board[i][j] == 19){
+                printf("| ");
             }
+            */
+            if (board[i][j] > 9 && board[i][j] < 19)
+                printf( "%d ", board[i][j] - 10);
+            else if (board[i][j] == 9)
+                printf("0 ");
             else
                 printf("- ");
         }

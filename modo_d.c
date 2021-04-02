@@ -17,6 +17,47 @@ void modo_d1(int board[17][26], int lines, int columns)
     }
 }
 
+void modo_d2(int board[17][26], int lines, int columns)
+{
+    int x = 2;
+    int y = 2;
+    while(1){
+        while(1){
+            board[y][x] += 10;
+            if (peca_killer_checker(board, x, y) == 1) break;
+            board[y - 1][x] += 10;
+            if (peca_killer_checker(board, x, y) == 1) break;
+            board[y + 1][x] += 10;
+            if (peca_killer_checker(board, x, y) == 1) break;
+            board[y][x - 1] += 10;
+            if (peca_killer_checker(board, x, y) == 1) break;
+            board[y][x + 1] += 10;
+            if (peca_killer_checker(board, x, y) == 1) break;
+            board[y - 1][x - 1] += 10;
+            if (peca_killer_checker(board, x, y) == 1) break;
+            board[y + 1][x + 1] += 10;
+            if (peca_killer_checker(board, x, y) == 1) break;
+            board[y - 1][x + 1] += 10;
+            if (peca_killer_checker(board, x, y) == 1) break;
+            board[y + 1][x - 1] += 10;
+            if (peca_killer_checker(board, x, y) == 1) break;
+        }
+        if (end_check(board, lines, columns) == 1){
+            break;
+        }
+        if (x == (columns - 1) && y == (lines - 1)){
+            break;
+        }
+        else if (x == (columns - 1)){
+            x = 2;
+            y += 3;
+        }
+        else{
+            x += 3;
+        }
+    }
+    board_printer(board, lines, columns);
+}
 
 void rebentador_de_tabuleiros(int board[17][26], int lines, int columns)
 {
@@ -24,25 +65,46 @@ void rebentador_de_tabuleiros(int board[17][26], int lines, int columns)
     int y = 2;
     while(1){
         while(1){
-            board[y][x] += 10;
-            if (peca_killer(board, x, y) == 1) break;
-            board[y - 1][x] += 10;
-            if (peca_killer(board, x, y) == 1) break;
-            board[y + 1][x] += 10;
-            if (peca_killer(board, x, y) == 1) break;
-            board[y][x - 1] += 10;
-            if (peca_killer(board, x, y) == 1) break;
-            board[y][x + 1] += 10;
-            if (peca_killer(board, x, y) == 1) break;
-            board[y - 1][x - 1] += 10;
-            if (peca_killer(board, x, y) == 1) break;
-            board[y + 1][x + 1] += 10;
-            if (peca_killer(board, x, y) == 1) break;
-            board[y - 1][x + 1] += 10;
-            if (peca_killer(board, x, y) == 1) break;
-            board[y + 1][x - 1] += 10;
-            if (peca_killer(board, x, y) == 1) break;
+            if (board[y][x] != 19){
+                board[y][x] += 10;
+                if (peca_killer_checker(board, x, y) == 1) break;
+            }
+
+            if (board[y - 1][x] != 19){
+                board[y - 1][x] += 10;
+                if (peca_killer_checker(board, x, y) == 1) break;
+            }
+            if (board[y + 1][x] != 19){
+                board[y + 1][x] += 10;
+                if (peca_killer_checker(board, x, y) == 1) break;
+            }
+            if (board[y][x - 1] != 19){
+                board[y][x - 1] += 10;
+                if (peca_killer_checker(board, x, y) == 1) break;
+            }
+            if (board[y][x + 1] != 19){
+                board[y][x + 1] += 10;
+                if (peca_killer_checker(board, x, y) == 1) break;
+            }
+            if (board[y - 1][x - 1] != 19){
+                board[y - 1][x - 1] += 10;
+                if (peca_killer_checker(board, x, y) == 1) break;
+            }
+            if (board[y + 1][x + 1] != 19){
+                board[y + 1][x + 1] += 10;
+                if (peca_killer_checker(board, x, y) == 1) break;
+            }
+            if (board[y - 1][x + 1] != 19){
+                board[y - 1][x + 1] += 10;
+                if (peca_killer_checker(board, x, y) == 1) break;
+            }
+            if (board[y + 1][x - 1] != 19){
+                board[y + 1][x - 1] += 10;
+                if (peca_killer_checker(board, x, y) == 1) break;
+            }
         }
+        anulator(board, x, y);
+        //board_printer(board, lines, columns);
         if (end_check(board, lines, columns) == 1){
             break;
         }
@@ -73,7 +135,7 @@ int end_check(int board[17][26], int lines, int columns)
     return 1;
 }
 
-int peca_killer(int board[17][26], int x, int y)
+int peca_killer_checker(int board[17][26], int x, int y)
 { 
     for (int i = (y - 1); i < (y + 2); i++) {
         for (int j = (x - 1); j < (x + 2); j++){
@@ -82,4 +144,20 @@ int peca_killer(int board[17][26], int x, int y)
         }
     }
     return 1;
+}
+
+void anulator(int board[17][26], int x, int y)
+{
+    for (int i = (y - 1); i < (y + 2); i++){
+        for (int j = (x - 1); j < (x + 2); j++){
+            if (board[i][j] > 10 && board[i][j] < 19){
+                for (int d = (i - 1); d < (i + 2); d++){
+                    for (int e = (j - 1); e < (j + 2); e++){
+                        if (board[d][e] < 1)
+                            board[d][e] = 19;
+                    }
+                }
+            }
+        }
+    }
 }
