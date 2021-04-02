@@ -115,7 +115,11 @@ int main(int argc, char **argv)
         modo_p1(lines, columns, board);
     if (modo[1] == 2)
         modo_p2(lines, columns, board, p_num);
-    board_printer(board, lines, columns);
+    if (modo[2] == 1)
+        modo_d1(board, lines, columns);
+    if (modo[2] == 2)
+        rebentador_de_tabuleiros(board, lines, columns);
+    //board_printer(board, lines, columns);
     //printf("j: %d    p: %d    d: %d\n", modo[0], modo[1], modo[2]);
     
 

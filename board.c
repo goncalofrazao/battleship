@@ -4,24 +4,29 @@
 void board_printer(int board[17][26], int lines, int columns)
 {
     for (int i = 1; i <= lines; i++){
-        for (int j = 0; j <= columns; j++){
-            if (j == 0){
-                if (lines - i + 1 < 10)
-                    printf(" %d ", lines - i + 1);
-                else
-                    printf("%d ", lines - i + 1);
+        /*
+        if (lines - i + 1 < 10)
+            printf(" %d ", lines - i + 1);
+        else
+            printf("%d ", lines - i + 1);
+        */
+        for (int j = 1; j <= columns; j++){
+            if (board[i][j] > 9)
+                printf( "%d ", board[i][j] - 10);
+            else if (board[i][j] == 9){
+                printf("0 ");
             }
-            else if (board[i][j] > 0)
-                printf( "%d ", board[i][j]);
             else
                 printf("- ");
         }
         printf("\n");
     }
+    /*
     printf("   ");
     for (int i = 0; i < columns; i++){
         printf("%c ", i + 'A');
     }
+    */
     printf("\n");
 }
 

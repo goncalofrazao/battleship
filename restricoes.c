@@ -49,33 +49,11 @@ int restricao2(int lines, int columns, int p_num[9])
 
 int restricao3(int p_num[9])
 {
-    if (p_num[8] > p_num[7]){
-        printf(".|.\n");
-        return -1;
-    }
-    else if (p_num[7] > p_num[6]){
-        printf(".|.\n");
-        return -1;
-    }
-    if (p_num[6] > p_num[5]){
-        printf(".|.\n");
-        return -1;
-    }
-    if (p_num[5] > p_num[4]){
-        printf(".|.\n");
-        return -1;
-    }
-    if (p_num[4] > p_num[3]){
-        printf(".|.\n");
-        return -1;
-    }
-    if (p_num[3] > p_num[2]){
-        printf(".|.\n");
-        return -1;
-    }
-    if (p_num[2] > p_num[1]){
-        printf(".|.\n");
-        return -1;
+    for (int i = 8; i > 0; i--){
+        if (p_num[i] > p_num[i - 1]){
+            printf(".|.\n");
+            return -1;
+        }
     }
     return 1;
 }
