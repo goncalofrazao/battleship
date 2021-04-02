@@ -5,7 +5,7 @@
 #include "board.h"
 
 
-void modo_p1(int lines, int columns, int board[17][26])
+void modo_p1(int lines, int columns, int board[17][26], int p_num[9])
 {
     int x = 1;
     int y = 1;
@@ -18,11 +18,15 @@ void modo_p1(int lines, int columns, int board[17][26])
             }
             else {
                 positioning_pieces(x, y, global_id, board);
+                int type = global_id_to_type(global_id);
+                p_num[type]++;
                 break;
             }
         }
-        if (i == 3)
+        if (i == 3){
             positioning_pieces(x, y, 5, board);
+            p_num[1]++;
+        }
         if ((x > (columns - 3)) && (y > (lines - 3))){ // finish positioning
             break;
             //printf("columns:%d   lines: %d\n", x, y);

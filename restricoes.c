@@ -49,7 +49,7 @@ int restricao2(int lines, int columns, int p_num[9])
 
 int restricao3(int p_num[9])
 {
-    for (int i = 8; i > 0; i--){
+    for (int i = 8; i > 1; i--){
         if (p_num[i] > p_num[i - 1]){
             printf(".|.\n");
             return -1;

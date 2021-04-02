@@ -12,7 +12,7 @@ void modo_d1(int board[17][26], int lines, int columns)
         if (board[y][x] < 9){
             //printf("x: %d y: %d \n", x, y);
             board[y][x] += 10;
-            board_printer(board, lines, columns);
+            board_printer1(board, lines, columns);
         }
     }
 }
@@ -56,7 +56,7 @@ void modo_d2(int board[17][26], int lines, int columns)
             x += 3;
         }
     }
-    board_printer(board, lines, columns);
+    //board_printer1(board, lines, columns);
 }
 
 void rebentador_de_tabuleiros(int board[17][26], int lines, int columns)
@@ -69,7 +69,6 @@ void rebentador_de_tabuleiros(int board[17][26], int lines, int columns)
                 board[y][x] += 10;
                 if (peca_killer_checker(board, x, y) == 1) break;
             }
-
             if (board[y - 1][x] != 19){
                 board[y - 1][x] += 10;
                 if (peca_killer_checker(board, x, y) == 1) break;
@@ -119,7 +118,7 @@ void rebentador_de_tabuleiros(int board[17][26], int lines, int columns)
             x += 3;
         }
     }
-    board_printer(board, lines, columns);
+    //board_printer(board, lines, columns);
 }
 
 

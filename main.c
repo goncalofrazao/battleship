@@ -6,6 +6,7 @@
 #include "input_check.h"
 #include "modo_p.h"
 #include "modo_d.h"
+#include "modo_j.h"
 
 
 int main(int argc, char **argv)
@@ -111,16 +112,16 @@ int main(int argc, char **argv)
         help_message();
         return -1;
     }
-    if (modo[1] == 1)
-        modo_p1(lines, columns, board);
-    if (modo[1] == 2)
-        modo_p2(lines, columns, board, p_num);
+    if (modo[0] == 0)
+        modo_j0(modo[1], lines, columns, board, p_num);
+    /*
     if (modo[2] == 1)
         modo_d1(board, lines, columns);
     if (modo[2] == 2)
         modo_d2(board, lines, columns);
     if (modo[2] == 3)
         rebentador_de_tabuleiros(board, lines, columns);
+    */
     //board_printer(board, lines, columns);
     //printf("j: %d    p: %d    d: %d\n", modo[0], modo[1], modo[2]);
     
