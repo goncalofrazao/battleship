@@ -10,7 +10,7 @@ all: $(PROJECT_NAME)
 $(PROJECT_NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $(PROJECT_NAME)
 
-main.o: main.c
+main.o: main.c headers.h restricoes.h pieces.h board.h help.h input_check.h modo_p.h modo_d.h modo_j.h
 
 help.o: help.c help.h
 

@@ -114,14 +114,9 @@ int main(int argc, char **argv)
     }
     if (modo[0] == 0)
         modo_j0(modo[1], lines, columns, board, p_num);
-    /*
-    if (modo[2] == 1)
-        modo_d1(board, lines, columns);
-    if (modo[2] == 2)
-        modo_d2(board, lines, columns);
-    if (modo[2] == 3)
-        rebentador_de_tabuleiros(board, lines, columns);
-    */
+    if (modo[0] == 1)
+        modo_j1(modo[1], lines, columns, board, p_num);
+    
     //board_printer(board, lines, columns);
     //printf("j: %d    p: %d    d: %d\n", modo[0], modo[1], modo[2]);
     
