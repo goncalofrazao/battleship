@@ -54,9 +54,9 @@ void modo_p2(int lines, int columns, int board[17][26], int p_num[9])
         for (int i = 1; i < 9; i++) // calcula a soma do total de peças a colocar
             n_pecas += p_num[i];
         p_num[0] = lines * columns / 9 - n_pecas; // calcula o numero de espaços vazio no tabuleiro
-
         while(counter2 < 1000){ // tenta colocar o tabuleiro 1000 vezes, ou corre até conseguir gerar o tabuleiro
-            //clear_board(board, lines, columns);
+            int flag = 0;
+            clear_board(board);
             int num[9] = {0}; // num serve para ir descontando as peças que ja foram colocadas
             for (int i = 0; i < 9;i++) // este for copia o numero de peças de cada tipo do p_num para o num
                 num[i] = p_num[i];
@@ -64,16 +64,28 @@ void modo_p2(int lines, int columns, int board[17][26], int p_num[9])
             int y = 1; // inicializaçao do y na primeira posiçao
 
             while (1){ // corre enquanto não colocar a última peça
-                int try[9] = {0}; // esta array serve para confirmar se uma peça já foi testada ou não e inicializa-a a 0
+                int try[9] = {0};
                 int counter = 0; // este counter conta as vezes que se tentou outro tipo
                 while(counter < 8){ // enquanto não tentar 8 vezes
-                    while(1){ 
+                    int c = 0;
+                    int arr[9] = {0};
+                    while(1){
                         type = (rand() % 9); // gera um numero random de 0 a 8 (0 = espaço vazio, 1-8 tipo da peça)
+                        if ((arr[type] == 0) && ((num[type] > 0 && try[type] > 0) || num[type] == 0)){
+                            c++;
+                            arr[type]++;
+                        }
+                        if (c == 9){
+                            flag = 1;
+                            break;
+                        }
                         if ((num[type] > 0 && try[type] == 0)){ // se o houver peças do tipo gerado para colocar e se ainda nao tiver sido testada
                             num[type]--; // subtrai 1 peça do tipo gerado 
+                            //printf("num of %d: %d\n", type, num[type]);
                             break; // da break no while porque já encontrou um tipo não testado
                         }
                     }
+                    if (flag == 1) break;
                     instance = instance_generator(type); // gera uma variante consoante o tipo da peça
                     global_id = global_id_returner(type, instance); // global id em funçao do tipo e da instance
                     if (restricao1(x, y, global_id, columns, lines, board) != -1){ // se cumprir a restriçao 1
@@ -97,6 +109,8 @@ void modo_p2(int lines, int columns, int board[17][26], int p_num[9])
                         }
                     }
                 }
+                if (flag == 1) break;
+                //board_printer2(board, lines, columns);
                 if (counter > 7){ // se o while anterior tiver dado break por causa do contador chegar ao fim
                     counter2++; // adiciona 1 as vezes que o programa ja tentou colocar o tabuleiro
                     break; // e dá break para voltar a tentar colocar o tabuleiro
@@ -115,9 +129,11 @@ void modo_p2(int lines, int columns, int board[17][26], int p_num[9])
                     //printf("lines:%d\ncolumns: %d\n", lines, columns);
                 }
             }
-            if (x > (columns - 3) && y > (lines - 3)){ // se tiver dado break porque estava no ultimo bloco
+            //printf("counter: %d\n", counter2);
+            if ((x > (columns - 3)) && (y > (lines - 3)) && (flag == 0)){ // se tiver dado break porque estava no ultimo bloco
                 break; // da break porque já colocou o tabuleiro todo
             }
+            counter2++;
         }
     }
 }
