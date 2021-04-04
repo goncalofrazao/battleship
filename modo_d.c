@@ -13,38 +13,51 @@ void modo_d1(int lines, int columns, int p_num[9])
     int input;
     int type = 0;
     int p[9] = {0};
-    while (end(p_num, p) != 1){
+    while (end(p_num, p) == -1){
         x = (rand() % columns) + 1;
         y = (rand() % lines) + 1;
-        if (board[y][x] > 0){
+        if (board[y][x] == 0){
             xp = x_pc_to_user(x);
             yp = y_pc_to_user(y, lines);
-            printf(" %c%d\n", xp, yp);
+            printf("%c%d\n", xp, yp);
             scanf(" %lc", &input);
-            if (input == '-')
-                    board[y][x] = 9;
-            else if (input > '0' && input < '9'){
+            if (input == '-'){
+                //printf("nullo\n");
+                board[y][x] = 9;
+            }
+            else if (input > '0' && input < '9' && p_num[input - '0'] > 0){
+                //printf("type\n");
                 type = input - '0';
-                board[y][x] = input - '0';
+                board[y][x] = type;
+                printf("pos: %d\n", board[y][x]);
                 x = center(x);
                 y = center(y);
-                if (peca_killer_checker(board, x, y, p, 0) == 1){
-                    if (piece_compare(board, x, y, type) == 1){
+                //printf("x: %d y: %d\n", x, y);
+                if (peca_killer_checker(board, x, y, p, type) == 1){
+                    p[type]++;
+                    if (piece_compare(board, x, y, type) == 0){
                         printf("this piece does not exist\n");
                         break;
                     }
-                    if (piece_existance(p_num, p) == 1){
+                    if (piece_existance(p_num, p) == -1){
                         printf("you did not declare enough pieces of this type\n");
                         break;
                     }
-                    anulator(board, x, y);
                 }
             }
-            if (end(p_num, p) == 1)
-                break;
-            //board_printer1(board, lines, columns);
+            else {
+                printf("invalid input\n");
+            }
+            //board_printer2(board, lines, columns);
         }
     }
+    int i = 1;
+    for (i = 1; i < 9; i++){
+        if (p[i] != 0)
+            break;
+    }
+    if (i > 8) printf("you should declare some pieces in the command line\n");
+    board_printer2(board, lines, columns);
 }
 
 void modo_d2(int board[17][26], int lines, int columns, int p_num[9])
@@ -268,14 +281,20 @@ int piece_compare(int board[17][26], int x, int y, int type)
 {
     for (int global_id = global_id_returner(type, 1); global_id <= global_id_returner(type, max_instance(type)); global_id++){
         int flag = 1;
+        printf("global_id: %d\n", global_id);
         for (int i = 0; i < 3; i++){
             for (int d = 0; d < 3; d++){
-                if (board[y - 1 + i][x - 1 + d] != piece[global_id][i][d]) flag  = 0;
+                if (!((board[y - 1 + i][x - 1 + d] == piece[global_id][i + 1][d + 1]) || (board[y - 1 + i][x - 1 + d] == 9 && piece[global_id][i + 1][d + 1] == 0))){ 
+                    printf("position board: %d position piece: %d\n", board[y - 1 + i][x - 1 + d], piece[global_id][i + 1][d + 1]);
+                    flag  = 0;
+                }
                 if (flag == 0) break;
             }
             if (flag == 0) break;
         }
-        if (flag == 1) return 1;
+        if (flag == 1) {
+            return 1;
+        }
     }
     return 0;
 }
@@ -299,23 +318,22 @@ int piece_existance(int p_num[9], int p[9])
     return 1;
 }
 
-int peca_killer_checker(int board[17][26], int x, int y, int p[9], int last)
+int peca_killer_checker(int board[17][26], int x, int y, int p[9], int type)
 {
     int sum = 0;
-    int type = 0;
     for (int i = (y - 1); i < (y + 2); i++) {
         for (int j = (x - 1); j < (x + 2); j++){
             if (board[i][j] > 0 && board[i][j] < 9){
-                type = board[i][j];
                 sum++;
-                if (sum == type){
-                    return 1;
-                }
             }
         }
     }
-    if (type == 0 && last == 1)
+    if (sum == type){
         return 1;
+    }
+    if (sum == type && type == 0){
+        return 1;
+    }
     return -1;
 }
 
