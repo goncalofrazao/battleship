@@ -72,18 +72,23 @@ void modo_j1(int modo_p, int lines, int columns, int board[17][26], int p_num[9]
 
 void modo_j2(int modo_d, int lines, int columns, int board[17][26], int p_num[9])
 {
+    time_t begin;
+    time_t end;
+    int counter;
+    time(&begin);
     switch (modo_d)
     {
     case 1:
-        modo_d1(lines, columns, p_num);
+        counter = modo_d1(board, lines, columns, p_num);
         break;
     
     case 3:
-        modo_d3(lines, columns, p_num);
+        counter = modo_d3(board, lines, columns, p_num);
         break;
     }
-    
-
+    time(&end);
+    printf("Fim de Jogo: %d jogadas em %ld segundos\n", counter, end - begin);
+    board_printer2(board, lines, columns);
 }
 
 int input(int line, int column, int board[17][26], int lines, int columns)

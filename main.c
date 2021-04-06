@@ -122,7 +122,8 @@ int main(int argc, char **argv)
         modo_j0(modo[1], lines, columns, board, p_num);
     if (modo[0] == 1)
         modo_j1(modo[1], lines, columns, board, p_num);
-    modo_d1(lines, columns, p_num);
+    if (modo[0] == 2)
+        modo_j2(modo[2], lines, columns, board, p_num);
     /*
     modo_j2(modo[2], lines, columns, board, p_num);
     if (modo[0] == 2)

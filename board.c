@@ -5,10 +5,8 @@ void board_printer1(int board[17][26], int lines, int columns)
 {
     for (int i = 1; i <= lines; i++){
         
-        if (lines - i + 1 < 10)
-            printf(" %d ", lines - i + 1);
-        else
-            printf("%d ", lines - i + 1);
+        
+        printf("%2d ", lines - i + 1);
         
         for (int j = 1; j <= columns; j++){
             /*
@@ -38,10 +36,8 @@ void board_printer2(int board[17][26], int lines, int columns)
 {
     for (int i = 1; i <= lines; i++){
         
-        if (lines - i + 1 < 10)
-            printf(" %d ", lines - i + 1);
-        else
-            printf("%d ", lines - i + 1);
+        
+        printf("%2d ", lines - i + 1);
         
         for (int j = 1; j <= columns; j++){
             /*
