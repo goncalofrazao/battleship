@@ -100,7 +100,7 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9])
     
     int xp = 0;
     int yp = 0;
-    int counter;
+    int counter = 0;
     int input;
     int type = 0;
     int p[9] = {0};
