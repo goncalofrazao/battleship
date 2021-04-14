@@ -109,5 +109,7 @@ void modo_p2(int lines, int columns, int board[17][26], int p_num[9])
             }
             counter2++;
         }
+        if(counter2 == 1000)
+            printf("it was impossible to generate a board\n");
     }
 }

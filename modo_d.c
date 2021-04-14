@@ -50,7 +50,7 @@ int modo_d1(int board[17][26], int lines, int columns, int p_num[9])
     if (i > 8) printf("you should declare some pieces in the command line\n");
     return counter;
 }
-
+/*
 void modo_d2(int board[17][26], int lines, int columns, int p_num[9])
 {
     int x = 2;
@@ -93,8 +93,8 @@ void modo_d2(int board[17][26], int lines, int columns, int p_num[9])
     }
     //board_printer1(board, lines, columns);
 }
-
-int modo_d3(int board[17][26], int lines, int columns, int p_num[9])
+*/
+int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
 {
     
     int xp = 0;
@@ -244,7 +244,8 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9])
                 }
                 break;
             }
-            anulator(board, x, y);
+            if (modo_d == 3)
+                anulator(board, x, y);
             //board_printer(board, lines, columns);
             if (end(p_num, p) == 1){
                 return counter;

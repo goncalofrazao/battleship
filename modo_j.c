@@ -81,9 +81,10 @@ void modo_j2(int modo_d, int lines, int columns, int board[17][26], int p_num[9]
     case 1:
         counter = modo_d1(board, lines, columns, p_num);
         break;
-    
+
+    case 2:
     case 3:
-        counter = modo_d3(board, lines, columns, p_num);
+        counter = modo_d3(board, lines, columns, p_num, modo_d);
         break;
     }
     time(&end);
