@@ -31,10 +31,12 @@ int check(int lines, int columns, int modo[3], int p_num[8], int flag_d_in)
         printf("-6\n");
         return -1;
     }
+    /*
     if (modo[0] == 2 && modo[1] == 2){
         printf("-7\n");
         return -1;
     }
+    */
     if (modo[0] != 2 && modo[1] != 2 && (p_num[0] != 0 || p_num[1] != 0 || p_num[2] != 0 || p_num[3] != 0 || p_num[4] != 0 || p_num[5] != 0 || p_num[6] != 0 || p_num[7] != 0)){
         printf("-8\n");
         return -1;
