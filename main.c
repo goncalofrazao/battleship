@@ -15,7 +15,7 @@ int main(int argc, char **argv)
     int lines = 9;                                      // numero de linhas
     int board[17][26] = {0};                            // board predefinida com dimensoes maximas
     int modo[] = {0, 1, 1};                             // modo[0] = modo de jogo :: modo[1] = modo de posicionamento :: modo[2] = modo de disparo
-    int p_num[9] = {0};                                 // p_num[i] = numero de peças to tipo i-1 
+    int p_num[9] = {0};                                 // p_num[i] = numero de peças to tipo i-1
     int flag_d_in = 0;                                  // regista a alteração do modo de disparo
     srand(time(NULL));                                  // inicializaçao do timer
 
@@ -117,7 +117,7 @@ int main(int argc, char **argv)
         help_message();
         return -1;
     }
-    
+
     if (modo[0] == 0){
         modo_j0(modo[1], lines, columns, board, p_num);
     }
@@ -137,15 +137,7 @@ int main(int argc, char **argv)
 * ================================\n");
         modo_j2(modo[2], lines, columns, board, p_num);
     }
-    /*
-    modo_j2(modo[2], lines, columns, board, p_num);
-    if (modo[0] == 2)
-        modo_j2(modo[2], lines, columns, board, p_num);
-    */
 
-    //board_printer1(board, lines, columns);
-    //printf("j: %d    p: %d    d: %d\n", modo[0], modo[1], modo[2]);
-    
 
     return 0;
 }

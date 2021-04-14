@@ -27,7 +27,7 @@ void help_message() {
     -1 <num> ----- num = number of pieces type 1\n\
     -2 <num> ----- num = number of pieces type 2\n\
     -3 <num> ----- num = number of pieces type 3\n\
-    -4 <num> ----- num = number of pueces type 4\n\
+    -4 <num> ----- num = number of pieces type 4\n\
     -5 <num> ----- num = number of pieces type 5\n\
     -6 <num> ----- num = number of pieces type 6\n\
     -7 <num> ----- num = number of pieces type 7\n\
