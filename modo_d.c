@@ -41,7 +41,6 @@ int modo_d1(int board[17][26], int lines, int columns, int p_num[9])
             }
             //board_printer2(board, lines, columns);
         }
-        return counter;
     }
     int i = 1;
     for (i = 1; i < 9; i++){

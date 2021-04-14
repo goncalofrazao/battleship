@@ -118,12 +118,25 @@ int main(int argc, char **argv)
         return -1;
     }
     
-    if (modo[0] == 0)
+    if (modo[0] == 0){
         modo_j0(modo[1], lines, columns, board, p_num);
-    if (modo[0] == 1)
+    }
+    if (modo[0] == 1){
+        printf("\n\
+* ================================\n\
+* Modo de Jogo 1\n\
+* Insira as Coordenadas de Disparo\n\
+* ================================\n");
         modo_j1(modo[1], lines, columns, board, p_num);
-    if (modo[0] == 2)
+    }
+    if (modo[0] == 2){
+        printf("\n\
+* ================================\n\
+* Modo de Jogo 2\n\
+* Crie um tabuleiro com as características indicadas * Responda aos disparos do programa\n\
+* ================================\n");
         modo_j2(modo[2], lines, columns, board, p_num);
+    }
     /*
     modo_j2(modo[2], lines, columns, board, p_num);
     if (modo[0] == 2)
