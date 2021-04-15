@@ -2,9 +2,6 @@
 #include "input_check.h"
 #include "help.h"
 
-// modo[0] = modo jogo :: modo[1] = modo posicionamento :: modo[2] = modo disparo
-// p_num[i] = numero de peças to tipo i-1
-
 int check(int lines, int columns, int modo[3], int p_num[8], int flag_d_in)
 {
     if (columns % 3 != 0 || columns < 9 || columns >24){

@@ -304,10 +304,6 @@ const int piece[43][5][5] = {  {
 
 };
 
-/*Esta função irá returnar o identificador global das peças em função do
-identificador da peça e da variante
-*/
-
 int global_id_returner(int type_id, int instance_id)
 {
     switch (type_id)

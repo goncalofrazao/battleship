@@ -41,7 +41,6 @@ int main(int argc, char **argv)
 
                 case 't':
                     sscanf(argv[i + 1], "%dx%d", &lines, &columns);
-                    //printf("lines: %d\ncolumns: %d\n", lines,columns);
                     break;
 
                 case 'j':
@@ -59,35 +58,27 @@ int main(int argc, char **argv)
 
                 case '1':
                     p_num[1] = (atoi(argv[i+1]));
-                    //printf("peças tipo 1: %d\n", p_num[1]);
                     break;
                 case '2':
                     p_num[2] = (atoi(argv[i+1]));
-                    //printf("peças tipo 2: %d\n", p_num[2]);
                     break;
                 case '3':
                     p_num[3] = (atoi(argv[i+1]));
-                    //printf("peças tipo 3: %d\n", p_num[3]);
                     break;
                 case '4':
                     p_num[4] = (atoi(argv[i+1]));
-                    //printf("peças tipo 4: %d\n", p_num[4]);
                     break;
                 case '5':
                     p_num[5] = (atoi(argv[i+1]));
-                    //printf("peças tipo 5: %d\n", p_num[5]);
                     break;
                 case '6':
                     p_num[6] = (atoi(argv[i+1]));
-                    //printf("peças tipo 6: %d\n", p_num[6]);
                     break;
                 case '7':
                     p_num[7] = (atoi(argv[i+1]));
-                    //printf("peças tipo 7: %d\n", p_num[7]);
                     break;
                 case '8':
                     p_num[8] = (atoi(argv[i+1]));
-                    //printf("peças tipo 8: %d\n", p_num[8]);
                     break;
 
                 default:

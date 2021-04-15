@@ -27,19 +27,15 @@ int modo_d1(int board[17][26], int lines, int columns, int p_num[9])
                 board[y][x] = 9;
             }
             else if (input > '0' && input < '9' && p_num[input - '0'] > 0){
-                //printf("type\n");
                 type = input - '0';
                 board[y][x] = type;
-                //printf("pos: %d\n", board[y][x]);
                 x = center(x);
                 y = center(y);
-                //printf("x: %d y: %d\n", x, y);
                 peca_killer_checker(board, x, y, p, type);
             }
             else {
                 printf("invalid input\n");
             }
-            //board_printer2(board, lines, columns);
         }
     }
     int i = 1;
@@ -50,50 +46,7 @@ int modo_d1(int board[17][26], int lines, int columns, int p_num[9])
     if (i > 8) printf("you should declare some pieces in the command line\n");
     return counter;
 }
-/*
-void modo_d2(int board[17][26], int lines, int columns, int p_num[9])
-{
-    int x = 2;
-    int y = 2;
-    int p[9] = {0};
-    while(1){
-        while(1){
-            board[y][x] += 10;
-            if (peca_killer_checker(board, x, y, p, 0) == 1) break;
-            board[y - 1][x] += 10;
-            if (peca_killer_checker(board, x, y, p, 0) == 1) break;
-            board[y + 1][x] += 10;
-            if (peca_killer_checker(board, x, y, p, 0) == 1) break;
-            board[y][x - 1] += 10;
-            if (peca_killer_checker(board, x, y, p, 0) == 1) break;
-            board[y][x + 1] += 10;
-            if (peca_killer_checker(board, x, y, p, 0) == 1) break;
-            board[y - 1][x - 1] += 10;
-            if (peca_killer_checker(board, x, y, p, 0) == 1) break;
-            board[y + 1][x + 1] += 10;
-            if (peca_killer_checker(board, x, y, p, 0) == 1) break;
-            board[y - 1][x + 1] += 10;
-            if (peca_killer_checker(board, x, y, p, 0) == 1) break;
-            board[y + 1][x - 1] += 10;
-            if (peca_killer_checker(board, x, y, p, 1) == 1) break;
-        }
-        if (end(p_num, p) == 1){
-            break;
-        }
-        if (x == (columns - 1) && y == (lines - 1)){
-            break;
-        }
-        else if (x == (columns - 1)){
-            x = 2;
-            y += 3;
-        }
-        else{
-            x += 3;
-        }
-    }
-    //board_printer1(board, lines, columns);
-}
-*/
+
 int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
 {
     
@@ -103,7 +56,6 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
     int input;
     int type = 0;
     int p[9] = {0};
-    //printf("lines: %d :: columns: %d\n", lines, columns);
     for(int y = 2; y <= lines; y += 3){
         for (int x = 2; x <= columns; x += 3){
             while(1){
@@ -113,10 +65,8 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
                     printf("%c%d\n", xp, yp);
                     scanf(" %lc", &input);
                     counter++;
-                    //printf("%d\n", input);
-                    if (input == '-'){
+                    if (input == '-')
                         board[y][x] = 9;
-                    }
                     else if (input > '0' && input < '9'){
                         type = input - '0';
                         board[y][x] = type;
@@ -129,7 +79,6 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
                     printf("%c%d\n", xp, yp);
                     scanf(" %lc", &input);
                     counter++;
-                    //printf("%d\n", input);
                     if (input == '-')
                         board[y - 1][x] = 9;
                     else if (input > '0' && input < '9'){
@@ -144,7 +93,6 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
                     printf("%c%d\n", xp, yp);
                     scanf(" %lc", &input);
                     counter++;
-                    //printf("%d\n", input);
                     if (input == '-')
                         board[y + 1][x] = 9;
                     else if (input > '0' && input < '9' && p_num[input - '0'] > 0){
@@ -159,7 +107,6 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
                     printf("%c%d\n", xp, yp);
                     scanf(" %lc", &input);
                     counter++;
-                    //printf("%d\n", input);
                     if (input == '-')
                         board[y][x - 1] = 9;
                     else if (input > '0' && input < '9' && p_num[input - '0'] > 0){
@@ -174,7 +121,6 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
                     printf("%c%d\n", xp, yp);
                     scanf(" %lc", &input);
                     counter++;
-                    //printf("%d\n", input);
                     if (input == '-')
                         board[y][x + 1] = 9;
                     else if (input > '0' && input < '9' && p_num[input - '0'] > 0){
@@ -189,7 +135,6 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
                     printf("%c%d\n", xp, yp);
                     scanf(" %lc", &input);
                     counter++;
-                    //printf("%d\n", input);
                     if (input == '-')
                         board[y - 1][x - 1] = 9;
                     else if (input > '0' && input < '9' && p_num[input - '0'] > 0){
@@ -204,7 +149,6 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
                     printf("%c%d\n", xp, yp);
                     scanf(" %lc", &input);
                     counter++;
-                    //printf("%d\n", input);
                     if (input == '-')
                         board[y + 1][x + 1] = 9;
                     else if (input > '0' && input < '9' && p_num[input - '0'] > 0){
@@ -219,7 +163,6 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
                     printf("%c%d\n", xp, yp);
                     scanf(" %lc", &input);
                     counter++;
-                    //printf("%d\n", input);
                     if (input == '-')
                         board[y - 1][x + 1] = 9;
                     else if (input > '0' && input < '9' && p_num[input - '0'] > 0){
@@ -234,7 +177,6 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
                     printf("%c%d\n", xp, yp);
                     scanf(" %lc", &input);
                     counter++;
-                    //printf("%d\n", input);
                     if (input == '-')
                         board[y + 1][x - 1] = 9;
                     else if (input > '0' && input < '9' && p_num[input - '0'] > 0){
@@ -247,7 +189,6 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
             }
             if (modo_d == 3)
                 anulator(board, x, y);
-            //board_printer(board, lines, columns);
             if (end(p_num, p) == 1){
                 return counter;
                 break;
@@ -255,7 +196,6 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
         }
     }
     return counter;
-    //board_printer(board, lines, columns);
 }
 
 int end(int p_num[9], int p[9])

@@ -58,7 +58,6 @@ void modo_j1(int modo_p, int lines, int columns, int board[17][26], int p_num[9]
             scanf(" %c%d", &column_input, &line);
             line = lines - line + 1;
             column = column_input - 'A' + 1;
-            //printf("C:%d L:%d\n", column, line);
             if (input(line, column, board, lines, columns) == 1){
                 break;
             }
