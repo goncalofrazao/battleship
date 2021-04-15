@@ -10,23 +10,20 @@ void modo_j0(int modo_p, int lines, int columns, int board[17][26], int p_num[9]
     {
     case 1:
         modo_p1(lines, columns, board, p_num);
-        printf("%dx%d", lines, columns);
-        for (int i = 1; i < 9; i++)
-            printf(" %d", p_num[i]);
-        printf("\n");
-        board_printer2(board, lines, columns);
+        
         break;
 
     case 2:
         modo_p2(lines, columns, board, p_num);
-        printf("%dx%d", lines, columns);
-        for (int i = 1; i < 9; i++)
-            printf(" %d", p_num[i]);
-        printf("\n");
-        board_printer2(board, lines, columns);
+        
         break;
     
     }
+    printf("%dx%d", lines, columns);
+    for (int i = 1; i < 9; i++)
+        printf(" %d", p_num[i]);
+    printf("\n");
+    board_printer(board, lines, columns);
 }
 
 void modo_j1(int modo_p, int lines, int columns, int board[17][26], int p_num[9])
@@ -75,7 +72,7 @@ void modo_j1(int modo_p, int lines, int columns, int board[17][26], int p_num[9]
     }
     time(&end);
     printf("Fim de Jogo: %d jogadas em %ld segundos\n", counter, end - begin);
-    board_printer1(board, lines, columns);
+    board_printer(board, lines, columns);
 }
 
 void modo_j2(int modo_d, int lines, int columns, int board[17][26], int p_num[9])
@@ -97,7 +94,7 @@ void modo_j2(int modo_d, int lines, int columns, int board[17][26], int p_num[9]
     }
     time(&end);
     printf("Fim de Jogo: %d jogadas em %ld segundos\n", counter, end - begin);
-    board_printer2(board, lines, columns);
+    board_printer(board, lines, columns);
 }
 
 int input(int line, int column, int board[17][26], int lines, int columns)
