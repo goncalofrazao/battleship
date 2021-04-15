@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 {
     int columns = 9;                                    // numero de colunas
     int lines = 9;                                      // numero de linhas
-    int board[17][26] = {0};                            // board predefinida com dimensoes maximas
+    int board[17][26] = {{0}};                            // board predefinida com dimensoes maximas
     int modo[] = {0, 1, 1};                             // modo[0] = modo de jogo :: modo[1] = modo de posicionamento :: modo[2] = modo de disparo
     int p_num[9] = {0};                                 // p_num[i] = numero de peças to tipo i-1
     int flag_d_in = 0;                                  // regista a alteração do modo de disparo

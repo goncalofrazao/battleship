@@ -104,8 +104,8 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
     int type = 0;
     int p[9] = {0};
     //printf("lines: %d :: columns: %d\n", lines, columns);
-    for(int y = 2; y < lines; y += 3){
-        for (int x = 2; x < columns; columns += 3){
+    for(int y = 2; y <= lines; y += 3){
+        for (int x = 2; x <= columns; x += 3){
             while(1){
                 if (board[y][x] == 0){
                     xp = x_pc_to_user(x);
@@ -114,8 +114,9 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
                     scanf(" %lc", &input);
                     counter++;
                     //printf("%d\n", input);
-                    if (input == '-')
+                    if (input == '-'){
                         board[y][x] = 9;
+                    }
                     else if (input > '0' && input < '9'){
                         type = input - '0';
                         board[y][x] = type;
@@ -131,7 +132,7 @@ int modo_d3(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
                     //printf("%d\n", input);
                     if (input == '-')
                         board[y - 1][x] = 9;
-                    else if (input > '0' && input < '9' && p_num[input - '0'] > 0){
+                    else if (input > '0' && input < '9'){
                         type = input - '0';
                         board[y - 1][x] = type;
                     }
@@ -277,7 +278,7 @@ int peca_killer_checker(int board[17][26], int x, int y, int p[9], int type)
             }
         }
     }
-    if (sum == type){
+    if (sum == type && type != 0){
         p[type]++;
         return 1;
     }
