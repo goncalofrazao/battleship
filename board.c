@@ -13,11 +13,8 @@
 *
 * Side-effects: none
 *
-* Description: This function is used in all modes. It reads the values of each
-*              position in matrix and prints it in stdout.
-*              In the beggining of each line it also prints the number of the
-*              line, and after printing all lines it prints a line with column
-*              identification.
+* Description: This funtion prints all the board including the lines and columns
+*              identifiers
 *
 *******************************************************************************/
 
@@ -56,14 +53,15 @@ void board_printer(int board[17][26], int lines, int columns)
 *
 * Return: No return.
 *
-* Side-effects: all the matrix to 0
+* Side-effects: all the board positions to 0
 *
-* Description: This funtion is used to reset all the board positions to 0.
+* Description: This funtion resets all the board positions to 0.
 *
 *******************************************************************************/
 
 void clear_board(int board[17][26])
 {
+    // 2 fors to reset all positions
     for (int i = 0; i < 17; i++){
         for (int j = 0; j < 26; j++){
             // position i j to 0
