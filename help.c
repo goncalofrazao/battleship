@@ -1,6 +1,21 @@
 #include "help.h"
 #include "headers.h"
 
+/******************************************************************************
+* Function name: help_message()
+*
+* Arguments: No Arguments
+*
+* Return: No return
+*         
+*
+* Side-effects: none
+*
+* Description: This function prints in stdout all the instructions to play the
+*              game.
+*
+*******************************************************************************/
+
 void help_message() {
 	printf("This is a help message\n\
     \n\
