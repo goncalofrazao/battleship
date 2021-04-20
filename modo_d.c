@@ -88,9 +88,9 @@ int modo_d1(int board[17][26], int lines, int columns, int p_num[9])
 *
 * Side-effects: none
 *
-* Description: This funtion prints in stdout random generated coordinates
-*              and receive an input by stdin with the value of the board in the 
-*              coordinates generated while game does not end.
+* Description: This funtion prints in stdout coordinates following a pre defined
+*              order and receive an input by stdin with the value of the board in 
+*              the coordinates generated while game does not end.
 *
 *******************************************************************************/
 
@@ -265,9 +265,27 @@ int modo_d23(int board[17][26], int lines, int columns, int p_num[9], int modo_d
     return counter;
 }
 
+/*******************************************************************************
+* Function name: end()
+*
+* Arguments: p_num[9] (int) - pieces in the board
+*            p[9] (int) - 
+*
+* Return: -1 - if any pieces left to destroy
+*         1 - if all pieces destroied
+*
+* Side-effects: none
+*
+* Description: This function confirms if the destroied pieces correpond to the
+*              total pieces in the game.
+*
+*******************************************************************************/
+
 int end(int p_num[9], int p[9])
 {
+    // go through all the array positions
     for (int d = 1; d < 9; d++){
+        // if pieces already shot and total pieces of the type d are different
         if (p_num[d] != p[d]){
             return -1;
         }
@@ -275,11 +293,32 @@ int end(int p_num[9], int p[9])
     return 1;
 }
 
+/*******************************************************************************
+* Function name: peca_killer_checker()
+*
+* Arguments: board[17][26] (int) - matrix of board
+*            x (int) - x of board position to check
+*            y (int) - y of board position to check
+*            p[9] (int) - number of pieces of each type already destroied
+*            type (int) - type of piece to check
+*
+* Return: -1 - if any pieces left to destroy
+*         1 - if all pieces destroied
+*
+* Side-effects: none
+*
+* Description: This function confirms if the destroied pieces correpond to the
+*              total pieces in the game.
+*
+*******************************************************************************/
+
 int peca_killer_checker(int board[17][26], int x, int y, int p[9], int type)
 {
     int sum = 0;
+    // x and y are in the middle of the board, so for start checking at y-1 and x-1
     for (int i = (y - 1); i < (y + 2); i++) {
         for (int j = (x - 1); j < (x + 2); j++){
+            // if board
             if (board[i][j] > 0 && board[i][j] < 9){
                 sum++;
             }

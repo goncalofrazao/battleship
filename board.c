@@ -4,7 +4,7 @@
 /******************************************************************************
 * Function name: board_printer()
 *
-* Arguments: board[][] (int) - board matrix
+* Arguments: board[17][26] (int) - board matrix
 *            lines (int) - number of lines of the game
 *            columns (int) - number of columns of the game
 *
@@ -48,7 +48,7 @@ void board_printer(int board[17][26], int lines, int columns)
 /******************************************************************************
 * Function name: clear_board()
 *
-* Arguments: board[][] (int) - 2 dimensions matrix of the game with the
+* Arguments: board[17][26] (int) - 2 dimensions matrix of the game with the
 *                              value of each position
 *
 * Return: No return.

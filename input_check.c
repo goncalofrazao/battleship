@@ -7,11 +7,11 @@
 *
 * Arguments: lines (int) - number of lines of the board in the game
 *            columns (int) - number of columns of the board in the game
-*            modo[] (int) - array that saves all the modes
+*            modo[3] (int) - array that saves all the modes
 *                           mode[0] - game mode
 *                           mode[1] - positioning mode
 *                           mode[2] - shooting mode
-*            p_num[] (int) - array that saves the number of each type
+*            p_num[9] (int) - array that saves the number of each type
 *                            p_num[0] - number of free spaces
 *                            p_num[1] - number of pieces type 1
 *                            ...
