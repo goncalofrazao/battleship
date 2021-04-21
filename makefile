@@ -1,7 +1,7 @@
 PROJECT_NAME = wargame #target file name
 
 CC = gcc #compiler
-CFLAGS = -Wall -std=c11 -g  #-O3
+CFLAGS = -Wall -std=c11 -O3
 
 OBJECTS = main.o restricoes.o pieces.o board.o help.o input_check.o modo_p.o modo_d.o modo_j.o #objects
 

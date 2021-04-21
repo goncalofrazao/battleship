@@ -1,6 +1,8 @@
 #include "headers.h"
 #include "pieces.h"
 
+// declaration of all pieces
+
 const int piece[43][5][5] = {  {
                         { 0, 0, 0, 0, 0},
                         { 0, 0, 0, 0, 0},
@@ -304,6 +306,21 @@ const int piece[43][5][5] = {  {
 
 };
 
+/*******************************************************************************
+* Function name: global_id_returner()
+*
+* Arguments: type_id (int) - type of the piece
+*            instance_id (int) - instance of the piece
+*
+* Return: global_id
+*
+* Side-effects: none
+*
+* Description: This function return the global id correspondent to the type
+*              and instance of the input
+*
+*******************************************************************************/
+
 int global_id_returner(int type_id, int instance_id)
 {
     switch (type_id)
@@ -335,10 +352,28 @@ int global_id_returner(int type_id, int instance_id)
     return 0;
 }
 
+/*******************************************************************************
+* Function name: positioning_pieces()
+*
+* Arguments: x (int) - x of the top left position of the square to position the piece
+*            y (int) - y of the top left position of the square to position the piece
+*            global_id (int) - global id of the piece to position
+*            board[17][26] (int) - matrix of board
+*
+* Return: no return
+*
+* Side-effects: changes the positions of the board
+*
+* Description: This funtion returns a random instance of the type of piece
+*
+*******************************************************************************/
+
 void positioning_pieces(int x, int y, int global_id, int board[17][26])
 {
+    // go through all the positions of a square
     for (int i = 0; i < 5; i++){
         for (int d = 0; d < 5; d++){
+            // changes the value of the square in the board to the values of the matrix of the pieces
             if (piece[global_id][i][d] > 0 || (piece[global_id][i][d] == -1 && board [y - 1 + i][x - 1 + d] == 0))
                 board[y - 1 + i][x - 1 + d] = piece[global_id][i][d];
         }
@@ -346,9 +381,23 @@ void positioning_pieces(int x, int y, int global_id, int board[17][26])
 
 }
 
+/*******************************************************************************
+* Function name: instance_generator()
+*
+* Arguments: type (int) - type of the piece
+*
+* Return: random instance (int)
+*
+* Side-effects: none
+*
+* Description: This funtion returns a random instance of the type of piece
+*
+*******************************************************************************/
+
 int instance_generator(int type)
 {
     int instance = 0;
+    // select the type and generate a random instance between the possible instances of a type
     switch (type)
     {
     case 1:
@@ -382,6 +431,19 @@ int instance_generator(int type)
     return instance;
 }
 
+/*******************************************************************************
+* Function name: max_instance()
+*
+* Arguments: type (int) - type of the piece
+*
+* Return: max instance (int)
+*
+* Side-effects: none
+*
+* Description: This funtion returns the max instance of the type of piece
+*
+*******************************************************************************/
+
 int max_instance(int type)
 {
     int max = 0;
@@ -399,6 +461,20 @@ int max_instance(int type)
         max = 1;
     return max;
 }
+
+/*******************************************************************************
+* Function name: global_id_to_type()
+*
+* Arguments: global_id (int) - global id of the piece
+*
+* Return: type (int)
+*
+* Side-effects: none
+*
+* Description: This funtion returns the type of the piece from the global id
+*              input
+*
+*******************************************************************************/
 
 int global_id_to_type(int global_id)
 {
