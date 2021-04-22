@@ -74,8 +74,8 @@ void modo_p2(int lines, int columns, int board[17][26], int p_num[9])
         int global_id;          // saves the global id of the type and instanec generated
         int counter2 = 0;       // counts how many times program has tried to generate a board
         int n_pecas = 0;        // number of pieces to position
-        int x;                  // x of the place to position the piece
-        int y;                  // y of the place to position the piece
+        int x = 0;              // x of the place to position the piece
+        int y = 0;              // y of the place to position the piece
         // counts how many pieces it has to position
         for (int i = 1; i < 9; i++)
             n_pecas += p_num[i];
