@@ -96,7 +96,8 @@ int modo_d1(int board[17][26], int lines, int columns, int p_num[9])
 
 int modo_d23(int board[17][26], int lines, int columns, int p_num[9], int modo_d)
 {
-    
+    int shoot_x[9] = {0, 0, 0, -1, 1, -1, 1, 1, -1};
+    int shoot_y[9] = {0, -1, 1, 0, 0, -1, 1, -1, 1};
     int xp = 0;             // x to print for user
     int yp = 0;             // y to print fot user
     int counter = 0;        // count how many shots
@@ -107,9 +108,9 @@ int modo_d23(int board[17][26], int lines, int columns, int p_num[9], int modo_d
     for(int y = 2; y <= lines; y += 3){
         for (int x = 2; x <= columns; x += 3){
             // this while is used to break the square shots if a piece is destroied
-            while(1){
+            for(int i = 0; i < 9; i++){
                 // just shot if position is 0
-                if (board[y][x] == 0){
+                if (board[y + shoot_y[i]][x + shoot_x[i]] == 0){
                     // convert x and y to user print
                     xp = x_pc_to_user(x);
                     yp = y_pc_to_user(y, lines);
