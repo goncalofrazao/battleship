@@ -1,3 +1,5 @@
+Este projeto obteve a classificação de 19,3 em 20.
+
 Este arquivo tem os seguintes ficheiros:
 
 9x9-p1		exemplo de output produzido com o comando: ./wargame -j 0
